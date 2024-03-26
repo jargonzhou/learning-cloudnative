@@ -1,0 +1,177 @@
+= Vertx
+
+image:https://img.shields.io/badge/vert.x-4.5.4-purple.svg[link="https://vertx.io"]
+
+This application was generated using http://start.vertx.io
+
+== Building
+
+To launch your tests:
+
+```
+./gradlew clean test
+```
+
+To package your application:
+
+```
+./gradlew clean assemble
+```
+
+To run your application:
+
+```
+./gradlew clean run
+```
+
+== Help
+
+* https://vertx.io/docs/[Vert.x Documentation]
+* https://stackoverflow.com/questions/tagged/vert.x?sort=newest&pageSize=15[Vert.x Stack Overflow]
+* https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
+* https://discord.gg/6ry7aqPWXy[Vert.x Discord]
+* https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]
+
+=== netcat
+
+```shell
+$ netcat 192.168.3.134 8887
+hello
+hello
+/quit
+/quit
+```
+
+=== wrk
+
+```shell
+# Windows WSL
+$ ./wrk --latency http://192.168.0.103:8888
+Running 10s test @ http://192.168.0.103:8888
+  2 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   762.27us    1.12ms  26.56ms   97.05%
+    Req/Sec     7.91k     1.84k   12.43k    84.58%
+  Latency Distribution
+     50%  551.00us
+     75%  715.00us
+     90%    1.07ms
+     99%    5.30ms
+  158111 requests in 10.10s, 15.38MB read
+Requests/sec:  15655.46
+Transfer/sec:      1.52MB
+```
+
+=== Address already in use: bind
+
+```shell
+# Windows
+$ netstat -ano | findstr 8888
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING       8888
+  TCP    0.0.0.0:8888           0.0.0.0:0              LISTENING       23328
+  TCP    [::]:8888              [::]:0                 LISTENING       23328
+  UDP    0.0.0.0:5050           *:*                                    8888
+$ TASKKILL /F /PID 23328
+SUCCESS: The process with PID 18444 has been terminated.
+```
+
+== Examples
+
+- MyEventLoop
+
+=== Verticles `verticles`
+
+- MainVerticle: The first verticle.
+- HelloVerticle: A verticle which expose HTTP handler.
+- DeployerVerticle, EmptyVerticle: A verticle deploys another verticle.
+- BlockEvenLoopVerticle: A verticle to block the event loop to trigger block thread checking.
+- WorkerVerticle, OffloadVerticle: A verticle executing blocking codes on worker thread pool.
+- OffloadVerticle: A verticle executed in {@link Vertx#executeBlocking(Callable, Handler)}.
+- ContextedVerticle: A verticle working with {@link io.vertx.core.Context}.
+- MixedThreadingVerticle: A verticle working with non-Vert.x thread.
+
+=== Event Bus `eventbus`
+
+- HeatSensorVerticle: publish to sensor.updates
+- ListenerVerticle: consume from sensor.updates
+- SensorDataVerticle: consume from sensor.updates and sensor.average
+- HttpServerVerticle: consume from sensor.updates and request to sensor.average
+
+SSE(Sever Sent Event):
+
+```shell
+$ http http://localhost:8080/sse --stream
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: text/event-stream
+transfer-encoding: chunked
+
+event: update
+data: {
+    "id": "3577cfb4-9ce1-4af8-a70a-9adb8fe1c90f",
+    "temp": 21.40151583190394
+}
+
+event: update
+data: {
+    "id": "fddf2a22-0057-4636-a2a0-59f41f877db8",
+    "temp": 20.971108867632342
+}
+
+event: average
+data: {
+    "average": 21.091449712253795
+}
+...
+```
+
+=== Asynchronous Data and Event Streams `streams`
+
+- JukeBoxVerticle: A verticle providing music streaming logic and HTTP interface for music players.
+- NetControlVerticle:  verticle providing a text-based TCP protocol for controlling JukeBox.
+
+```shell
+$ netcat localhsot 3000
+/list
+I Believe - R. Kelly.mp3
+It's My Life - Bon Jovi.mp3
+/schedule I Believe - R. Kelly.mp3
+/pause
+/play
+```
+
+- KeyValueDatabaseStream: A key-value database file stream reader and writer.
+
+=== Beyond Callbacks `callbackalternatives`
+
+with callback:
+
+- CollectorServiceVerticle: A collector verticle to collect data from `HeatSensorVerticle` and send to `SnapshotServiceVerticle`.
+- HeatSensorVerticle: A mocking sensor verticle.
+- SnapshotServiceVerticle: A mocking snapshot verticle.
+
+with future and promise:
+
+- CollectorServiceFPVerticle
+
+TODO:
+
+- Reactive extensions: RxJava
+- Kotlin coroutines
+
+=== Beyond Event Bus `eventbus.rpc`
+
+- SensorDataService: A sensor data service interface.
+- SensorDataServiceImpl: A sensor data service interface implementation over event bus.
+- DataVerticle: A verticle expose SensorDataService and bina to an address.
+
+TODO:
+
+- Service proxy for RxJava, Kotlin coroutines.
+
+=== Testing
+
+- TestDataVerticle2
+
+- TestSingleVerticleBase
+- TestMultipleVerticlesBase
