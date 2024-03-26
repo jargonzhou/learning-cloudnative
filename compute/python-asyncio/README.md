@@ -1,4 +1,8 @@
-# Playground of 'Python Concurrency with asyncio'
+# python-asyncio
+
+- https://docs.python.org/3/library/asyncio.html
+
+- ref: 'Python Concurrency with asyncio'.
 
 Python file template:
 
