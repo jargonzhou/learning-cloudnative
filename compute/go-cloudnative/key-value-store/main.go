@@ -2,11 +2,11 @@ package main
 
 import (
 	"spike.com/key-value-store/app"
-	"spike.com/key-value-store/config"
 )
 
+// TODO: add gRPC support in 'Remote Procedure Calls with gRPC' in '8. Loose Coupling' in 'Cloud Native Go'.
+// TODO: use the 'Hexagonal Architecture' in '8. Loose Coupling' in 'Cloud Native Go'.
+// TODO: add client support for kvs.
 func main() {
-	config.Init()
-
-	app.Start(":8888")
+	app.Start()
 }

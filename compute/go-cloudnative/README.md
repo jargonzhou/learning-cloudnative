@@ -8,5 +8,16 @@
 - ref: 'Learning Go'.
 - ref: 'Cloud Native Go'.
 
+CN proxy
+
+```shell
+# https://goproxy.cn/
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+```
+
 Actions:
 - [key-value-store](./key-value-store/README.md)
+- [patterns](./patterns/README.md)
+- [plugin](./plugins/README.md)
+- [plugins-hashicorp](./plugins-hashicorp/README.md)

@@ -10,17 +10,20 @@ import (
 type MemoryKVStore struct {
 	sync.RWMutex
 	m map[string]string
+
+	*config.AppConfig
 }
 
-func NewMemoryKVStore() (MemoryKVStore, error) {
-	return MemoryKVStore{
-		m: make(map[string]string),
+func newMemoryKVStore(cfg *config.AppConfig) (KVStore, error) {
+	return &MemoryKVStore{
+		m:         make(map[string]string),
+		AppConfig: cfg,
 	}, nil
 }
 
 func (s *MemoryKVStore) Put(key string, value string) error {
 	s.Lock()
-	config.Zaplog.Debug("Put", zap.String("key", key), zap.String("value", value))
+	s.Log.Debug("Put", zap.String("key", key), zap.String("value", value))
 	s.m[key] = value
 	s.Unlock()
 	return nil
@@ -38,7 +41,7 @@ func (s *MemoryKVStore) Get(key string) (string, error) {
 
 func (s *MemoryKVStore) Delete(key string) error {
 	s.Lock()
-	config.Zaplog.Debug("Delete", zap.String("key", key))
+	s.Log.Debug("Delete", zap.String("key", key))
 	delete(s.m, key)
 	s.Unlock()
 	return nil

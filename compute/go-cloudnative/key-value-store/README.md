@@ -39,3 +39,12 @@ docker build -t spike.com/kvs .
 
 docker run -it -p 8888:8888 -v ./transaction.log:/transaction.log spike.com/kvs
 ```
+
+## Doc
+
+TODO: add godoc comments.
+
+```shell
+go install  golang.org/x/tools/cmd/godoc@latest
+godoc -http=:6060
+```

@@ -1,12 +1,18 @@
+addr: ":8888"
+
 zap:
   # dev, prod
   log-level: dev
 
 # file, pg
-logger: file
-
-pg:
-  host: 192.168.3.183
-  dbname: devops
-  user: devops
-  password: devops+postgresql
+transact: 
+  type: file
+  file:
+    name: transaction.log
+  pg:
+    host: 192.168.3.183
+    dbname: devops
+    schema: public
+    table: transactions
+    user: devops
+    password: devops+postgresql

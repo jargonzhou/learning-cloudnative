@@ -9,43 +9,63 @@ import (
 )
 
 type KVSConfig struct {
+	Addr string `yaml:"addr"`
+
 	Zap struct {
 		LogLevel string `yaml:"log-level"`
 	}
-
-	Logger string `yaml:"logger"`
-	Pg     struct {
-		Host     string `yaml:"host"`
-		DbName   string `yaml:"dbname"`
-		User     string `yaml:"user"`
-		Password string `yaml:"password"`
+	Transact struct {
+		Type string
+		File struct {
+			Name string `yaml:"name"`
+		}
+		Pg struct {
+			Host     string `yaml:"host"`
+			DbName   string `yaml:"dbname"`
+			Schema   string `yaml:"schema"`
+			Table    string `yaml:"table"`
+			User     string `yaml:"user"`
+			Password string `yaml:"password"`
+		}
 	}
+	Logger string `yaml:"logger"`
 }
 
-var Zaplog *zap.Logger
-var AppConfig KVSConfig
+type AppConfig struct {
+	KVSConfig
+
+	// can we put logger in another location???
+	Log *zap.Logger
+}
 
 // make initialization explicitly
-func Init() {
-	var err error
-	AppConfig, err = parse("kvs.yaml")
-	if err != nil {
-		log.Fatalf("Can not parse kvs.yaml: %#v", err)
-	}
+func Load() (AppConfig, error) {
+	var appConfig AppConfig
 
-	switch AppConfig.Zap.LogLevel {
+	kvsConfig, err := parse("kvs.yaml")
+	if err != nil {
+		log.Printf("Can not parse kvs.yaml: %#v\n", err)
+		return appConfig, err
+	}
+	appConfig.KVSConfig = kvsConfig
+
+	var logger *zap.Logger
+	switch kvsConfig.Zap.LogLevel {
 	case "dev":
-		Zaplog, err = zap.NewDevelopment()
+		logger, err = zap.NewDevelopment()
 	case "prod":
-		Zaplog, err = zap.NewProduction()
+		logger, err = zap.NewProduction()
 	}
 	if err != nil {
-		log.Fatalf("Can not initialize zap logger: %#v\n", err)
+		log.Printf("Can not initialize zap logger: %#v\n", err)
+		return appConfig, err
 	}
-	defer Zaplog.Sync()
-	Zaplog.Info("zap logger initialized")
+	appConfig.Log = logger
+	defer logger.Sync()
+	logger.Info("zap logger initialized")
 
-	Zaplog.Debug("Application configuration", zap.Any("config", AppConfig))
+	logger.Debug("Application configuration", zap.Any("config", kvsConfig))
+	return appConfig, nil
 }
 
 func parse(filename string) (KVSConfig, error) {
