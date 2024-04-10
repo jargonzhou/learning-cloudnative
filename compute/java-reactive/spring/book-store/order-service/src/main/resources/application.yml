@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: order-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+  devtools:
+    restart.enabled: true # DEV_ENV
+    livereload.port: 35732
+  r2dbc:
+    username: devops
+    password: devops+postgresql
+    url: r2dbc:postgresql://localhost:5432/devops
+    pool:
+      max-create_connection-time: 2s
+      initial-size: 5
+      max-size: 10
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:18080/realms/bookstore
+
+server:
+  port: 9002
+  shutdown: graceful
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 15s
+
+logging:
+  level:
+    com.spike.spring.order: DEBUG
+
+book-store:
+  catalog-service-uri: "http://localhost:9001"
