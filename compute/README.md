@@ -4,3 +4,4 @@
 - [java-reactive](./java-reactive/README.md)
 - [serverless](./serverless/README.md)
 - [go-cloudnative](./go-cloudnative/README.md)
+- [event-streams](./event-streams/README.md)
