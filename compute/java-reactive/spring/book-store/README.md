@@ -4,7 +4,7 @@ components:
 - config-repo
   - A Git repository with branch `master`.
 - config-service
-  - A Spring Cloud Config Server project with `config-repo`.
+  - A Spring Cloud Config Server project with `config-repo` (a git repository).
 - catalog-service
   - A Spring Web MVC project with role OAuth2 Resource Service.
 - order-service
