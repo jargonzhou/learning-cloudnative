@@ -12,3 +12,7 @@ plugins {
 
 rootProject.name = "event-streams-in-action"
 include("app")
+include("app-samza")
+include("app-avro")
+include("app-avro:buildSrc")
+findProject(":app-avro:buildSrc")?.name = "buildSrc"

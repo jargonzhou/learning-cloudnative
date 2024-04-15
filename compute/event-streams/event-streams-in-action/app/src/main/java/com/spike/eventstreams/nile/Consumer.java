@@ -1,4 +1,4 @@
-package com.spike.eventstreams;
+package com.spike.eventstreams.nile;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

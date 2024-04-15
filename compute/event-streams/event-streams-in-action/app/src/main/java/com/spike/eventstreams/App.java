@@ -3,9 +3,19 @@
  */
 package com.spike.eventstreams;
 
+import com.spike.eventstreams.nile.Consumer;
+import com.spike.eventstreams.nile.DomainService;
+import com.spike.eventstreams.nile.FullProducer;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
+    }
+
+    public static interface Topics {
+        String RAW_EVENTS = "raw-events";
+        String BAD_EVENTS = "bad-events";
+        String ENRICHED_EVENTS = "enriched-events";
     }
 
     public static void main(String[] args) {
@@ -15,9 +25,11 @@ public class App {
         String groupId = "app";
         String inTopic = "raw-events";
         String goodTopic = "enriched-events";
+        String badTopic = "bad-events";
 
         Consumer consumer = new Consumer(servers, groupId, inTopic);
-        PassthruProducer producer = new PassthruProducer(servers, goodTopic);
+//        PassthruProducer producer = new PassthruProducer(servers, goodTopic);
+        FullProducer producer = new FullProducer(servers, goodTopic, badTopic, new DomainService());
         consumer.run(producer);
     }
 }

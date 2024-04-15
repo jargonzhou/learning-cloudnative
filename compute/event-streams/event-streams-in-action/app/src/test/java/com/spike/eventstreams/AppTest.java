@@ -3,12 +3,30 @@
  */
 package com.spike.eventstreams;
 
+import com.google.common.collect.Maps;
+import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.clients.admin.KafkaAdminClient;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
-    @Test void appHasAGreeting() {
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+public class AppTest {
+    public final static String servers = "localhost:9092";
+    public static final String BASE_DIR = "src/test/resources";
+
+    @Test
+    void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
+
+    public static AdminClient newAdminClient() {
+        Map<String, Object> conf = Maps.newHashMap();
+        conf.put("bootstrap.servers", servers);
+        conf.put("client.id", "admin-client");
+        return KafkaAdminClient.create(conf);
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.spike.eventstreams;
+package com.spike.eventstreams.nile;
 
 import com.google.common.collect.Maps;
 import org.apache.kafka.clients.producer.KafkaProducer;

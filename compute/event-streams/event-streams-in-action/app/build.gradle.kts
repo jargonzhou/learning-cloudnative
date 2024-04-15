@@ -15,6 +15,7 @@ repositories {
     mavenCentral()
 }
 
+// TODO: cleanup this mess after using Samza
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
@@ -30,16 +31,20 @@ dependencies {
     implementation("com.maxmind.geoip2:geoip2:4.2.0")
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
+
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
     implementation("org.slf4j:slf4j-api:1.7.36")
     runtimeOnly("ch.qos.logback:logback-core:1.5.4")
     runtimeOnly("ch.qos.logback:logback-classic:1.5.4")
+
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation("org.assertj:assertj-core:3.25.3")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
