@@ -1,0 +1,4 @@
+node_modules
+ops/mongo-data
+ops/pg-data
+ops/pgadmin

@@ -8,6 +8,7 @@
 <!-- https://github.com/graphql/graphiql/tree/main/packages/graphiql#examples -->
 <!doctype html>
 <html lang="en">
+  <meta charset="utf-8">
   <head>
     <title>GraphiQL</title>
     <style>
@@ -29,36 +30,42 @@
       If you do not want to rely on a CDN, you can host these files locally or
       include them directly in your favored resource bundler.
     -->
-    <script
+    <!-- <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
+    ></script> -->
+    <script src="./resources/react.development.js"></script>
+    <!-- <script
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
+    ></script> -->
+    <script src="./resources/react-dom.development.js"></script>
     <!--
       These two files can be found in the npm module, however you may wish to
       copy them directly into your environment, or perhaps include them in your
       favored resource bundler.
      -->
-    <script
+    <!-- <script
       src="https://unpkg.com/graphiql/graphiql.min.js"
       type="application/javascript"
-    ></script>
-    <link rel="stylesheet" href="https://unpkg.com/graphiql/graphiql.min.css" />
+    ></script> -->
+    <script src="./resources/graphiql.min.js" type="application/javascript"></script>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/graphiql/graphiql.min.css" /> -->
+    <link rel="stylesheet" charset="utf-8" href="./resources/graphiql.min.css"/>
     <!-- 
       These are imports for the GraphIQL Explorer plugin.
      -->
-    <script
+    <!-- <script
       src="https://unpkg.com/@graphiql/plugin-explorer/dist/index.umd.js"
       crossorigin
-    ></script>
+    ></script> -->
+    <script src="./resources/index.umd.js"></script>
 
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://unpkg.com/@graphiql/plugin-explorer/dist/style.css"
-    />
+    /> -->
+    <link rel="stylesheet" charset="utf-8" href="./resources/style.css"/>
   </head>
 
   <body>
@@ -68,7 +75,8 @@
       // DEV_ENV
       const fetcher = GraphiQL.createFetcher({
         // url: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
-        url: 'http://localhost:4000/', // ex-apolloserver
+        // url: 'http://localhost:4000/', // ex-apolloserver
+        url: 'http://localhost:4000/graphql', // ex-azdev
         headers: { 'X-Example-Header': 'foo' },
       });
       const explorerPlugin = GraphiQLPluginExplorer.explorerPlugin();
