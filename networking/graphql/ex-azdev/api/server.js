@@ -1,4 +1,4 @@
-import express from 'express'; // yarn add express
+import express from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
 import cors from 'cors'
 import { schema } from './schema/index.js';

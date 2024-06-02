@@ -1,0 +1,27 @@
+{
+  "name": "full-stack-graphql-applications",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "```shell",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "js",
+    "exec": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.10.4",
+    "graphql": "^16.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}
