@@ -1,0 +1,249 @@
+# P.77: find all businesses
+query ExampleQuery {
+  businesses {
+    name
+  }
+}
+# log
+# @neo4j/graphql:execution executing cypher +64ms
+# @neo4j/graphql:execution MATCH (this:Business)
+# @neo4j/graphql:execution RETURN this { .name } AS this +1ms
+# @neo4j/graphql:execution cypher params: {} +0ms
+
+# P.78: return business name and address
+query ExampleQuery {
+  businesses {
+    name
+    address
+  }
+}
+
+# P.79: including sort and limit
+query ExampleQuery {
+  businesses(options: { limit: 3, sort: { name: ASC } }) {
+    name
+  }
+}
+
+# P.81: including nested selection set
+query ExampleQuery {
+  businesses(options: { limit: 3, sort: { name: ASC } }) {
+    name
+    categories {
+      name
+    }
+  }
+}
+
+# P.82: fitler business names containing Brew
+query ExampleQuery {
+  businesses(where: { name_CONTAINS: "Brew" }) {
+    name
+    address
+  }
+}
+
+# P.83: nested filter
+query ExampleQuery {
+  businesses(
+    where: { name_CONTAINS: "Brew", reviews_SOME: { stars_GTE: 4.75 } }
+  ) {
+    name
+    address
+  }
+}
+
+# P.83: filter using logical operators
+query ExampleQuery {
+  businesses(
+    where: {
+      OR: [
+        { categories_SOME: { name: "Coffee" } }
+        { categories_SOME: { name: "Breakfast" } }
+      ]
+    }
+  ) {
+    name
+    address
+    categories {
+      name
+    }
+  }
+}
+
+# P.85: filter argument in selection set
+query ExampleQuery {
+  businesses(
+    where: {
+      OR: [
+        { categories_SOME: { name: "Coffee" } }
+        { categories_SOME: { name: "Breakfast" } }
+      ]
+    }
+  ) {
+    name
+    address
+    reviews(where: { text_CONTAINS: "breakfast sandwich" }) {
+      stars
+      text
+    }
+  }
+}
+
+# P.86: date field
+query ExampleQuery {
+  reviews(options: { limit: 3, sort: { date: DESC } }) {
+    stars
+    date
+    business {
+      name
+    }
+  }
+}
+
+# P.87: date filter
+query ExampleQuery {
+  reviews(
+    where: { date_LTE: "2017-01-01" }
+    options: { limit: 3, sort: { date: DESC } }
+  ) {
+    stars
+    date
+    business {
+      name
+    }
+  }
+}
+
+# P.88: Point field
+query ExampleQuery {
+  businesses(options: { limit: 3, sort: { name: ASC } }) {
+    name
+    location {
+      latitude
+      longitude
+    }
+  }
+}
+
+# P.89: distance filter
+query ExampleQuery {
+  businesses(
+    where: {
+      location_LT: {
+        distance: 3500
+        point: { latitude: 37.563675, longitude: -122.322243 }
+      }
+    }
+  ) {
+    name
+    address
+    city
+    state
+  }
+}
+
+# P.91: @cypher computed scalar fields averageStars
+query ExampleQuery {
+  businesses {
+    name
+    averageStars
+  }
+}
+
+# P.92 @cypher computed object/array fields recommended
+query ExampleQuery {
+  businesses {
+    name
+    averageStars
+    recommended {
+      name
+    }
+  }
+}
+
+### cypher
+# CREATE FULLTEXT INDEX businessNameIndex FOR (b:Business) ON EACH [b.name]
+# CALL db.index.fulltext.queryNodes("businessNameIndex", "libary~")
+
+# P.94: custom query fields
+# see also index.js
+query ExampleQuery {
+  fuzzyBusinessByName(searchString: "libary") {
+    name
+  }
+}
+
+# P.96: custom resolver for field waitTime
+query ExampleQuery {
+  businesses(where: { categories_SOME: { name: "Restaurant" } }) {
+    name
+    waitTime
+  }
+}
+
+
+# P.129: create business
+mutation {
+  createBusinesses(
+    input: {
+      businessId: "b10"
+      name: "Philz Coffee"
+      address: "113. S B St"
+      city: "San Mateo"
+      state: "CA"
+      location: { latitude: 37.567109, longitude: -122.323680 }
+    }
+  ) {
+    businesses {
+      businessId
+      name
+      address
+      city
+    }
+    info {
+      nodesCreated
+    }
+  }
+}
+
+# P.130: create relationship
+mutation {
+  updateBusinesses(
+    where: { businessId: "b10" }
+    connect: { categories: { where: { node: { name: "Coffee" } } } }
+  ) {
+    businesses {
+      name
+      categories {
+        name
+      }
+    }
+    info {
+      relationshipsCreated
+    }
+  }
+}
+
+# P.131: update business address
+mutation {
+  updateBusinesses(
+    where: { businessId: "b10" }
+    update: { address: "113 E 5th Ave" }
+  ) {
+    businesses {
+      name
+      address
+      categories {
+        name
+      }
+    }
+  }
+}
+
+# P.132: delete business
+mutation {
+  deleteBusinesses(where: { businessId: "b10" }) {
+    nodesDeleted
+  }
+}

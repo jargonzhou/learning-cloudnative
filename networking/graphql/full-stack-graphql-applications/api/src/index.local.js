@@ -2,7 +2,11 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 import { db } from './db.js';
-import { resolvers } from './resolvers.js';
+import { resolvers } from './resolvers.local.js';
+
+// ========================================================
+// GraphQL Schema
+// ========================================================
 
 const typeDefs = `
 type Business {

@@ -1,0 +1,30 @@
+# P.43
+query ExampleQuery {
+  allBusinesses {
+    name
+  }
+}
+
+# P.46
+query ExampleQuery {
+  businessBySearchTerm(search: "Library") {
+    businessId
+    name
+    address
+    avgStars
+  }
+}
+
+# P.47
+query ExampleQuery {
+  businessBySearchTerm(search: "Library") {
+    businessId
+    name
+    address
+    avgStars
+    reviews {
+      stars
+      text
+    }
+  }
+}
