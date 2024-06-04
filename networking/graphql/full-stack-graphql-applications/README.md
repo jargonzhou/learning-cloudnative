@@ -1,5 +1,7 @@
 # Code of 'Full Stack GraphQL Applications'
 
+- [Neo4j setup](https://github.com/zhoujiagen/application-store/tree/main/data-engineering/neo4j)
+
 ## API
 
 ```shell
