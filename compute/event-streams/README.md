@@ -1,3 +1,4 @@
 # Event Streams
 
-- [event-streams-in-action](./event-streams-in-action/README.md)
+- [Event Streams in Action](./event-streams-in-action/README.md)
+- [Building Real-Time Analytics Systems](./building-real-time-analytics-systems/README.md)

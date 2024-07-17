@@ -2,6 +2,7 @@
 __pycache__
 
 # compute
+compute/event-streams/building-real-time-analytics-systems/ops/mysql/data
 
 # storage
 
