@@ -4,6 +4,9 @@ __pycache__
 # compute
 compute/event-streams/building-real-time-analytics-systems/ops/mysql/data
 
+compute/multiprocessor/java/.gradle
+compute/multiprocessor/java/.idea
+
 # storage
 
 # networking

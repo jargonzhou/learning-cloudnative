@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.spike.concurrency'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.google.guava', name: 'guava', version: '30.0-jre'
+    implementation group: 'net.openhft', name: 'affinity', version: '3.21ea5'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+
+    testImplementation group: 'junit', name: 'junit', version: '3.8.2'
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+}
