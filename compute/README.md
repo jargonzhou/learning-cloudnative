@@ -15,3 +15,5 @@
     - [examples](./multiprocessor/java/README.md)
 
 - [serverless](./serverless/README.md)
+
+- [dapr](./dapr/REAME.md)

@@ -1,0 +1,24 @@
+=== ref
+===
+=== https://github.com/grpc/grpc-go/tree/master/examples/helloworld
+=== https://github.com/dapr/go-sdk/tree/main/examples/grpc-service
+
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+go mod init spike.com/dapr/grpc
+go mod tidy
+
+protoc --go_out=. --go_opt=paths=source_relative \
+  --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+  helloworld/helloworld.proto
+
+
+dapr run --app-id grpc-server_go \
+         --app-port 50051 \
+         --app-protocol grpc \
+         --dapr-grpc-port 50007 \
+         go run ./grpc-server_go/main.go
+
+dapr run --app-id grpc-client_go \
+         go run ./grpc-client_go/main.go

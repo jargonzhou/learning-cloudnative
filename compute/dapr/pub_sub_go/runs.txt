@@ -1,0 +1,8 @@
+=== ref
+===
+=== https://github.com/dapr/quickstarts/tree/master/pub_sub/go/sdk
+
+go mod init spike.com/dapr/pub_sub
+go mod tidy
+
+dapr run -f .
