@@ -10,7 +10,8 @@ Playground of Cloud Native concepts, patterns and applications.
 
 ## Actions
 
-- [Compute](./compute/README.md)
-- [Storage](./storage/README.md)
-- [Networking](./networking/README.md)
-- [Security](./security/README.md)
+- [Compute](./compute/compute.md)
+- [Storage](./storage/storage.md)
+- [Networking](./networking/networking.md)
+- [Security](./security/security.md)
+- [ObObservability](./observability/observability.md)

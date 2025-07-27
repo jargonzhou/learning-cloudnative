@@ -1,0 +1,190 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLNote</id><coordinates><x>10</x><y>90</y><w>80</w><h>30</h></coordinates><panel_attributes>Legend
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>150</y><w>80</w><h>30</h></coordinates><panel_attributes>/Interface/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>200</y><w>80</w><h>30</h></coordinates><panel_attributes>AbstractClass
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>250</y><w>80</w><h>30</h></coordinates><panel_attributes>Constant
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>300</y><w>80</w><h>30</h></coordinates><panel_attributes>Class</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>360</y><w>120</w><h>30</h></coordinates><panel_attributes>-Class in package</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>330</x><y>270</y><w>190</w><h>30</h></coordinates><panel_attributes>io.netty.handler.codec.mqtt
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>330</x><y>20</y><w>190</w><h>30</h></coordinates><panel_attributes>io.netty.handler.codec
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>270</y><w>210</w><h>30</h></coordinates><panel_attributes>MqttDecoder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>150</y><w>210</w><h>30</h></coordinates><panel_attributes>ReplayingDecoder&lt;DecoderState&gt;
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>80</y><w>150</w><h>30</h></coordinates><panel_attributes>ByteToMessageDecoder
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>200</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>100</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>990</x><y>270</y><w>170</w><h>30</h></coordinates><panel_attributes>MqttDecoder.DecoderState
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>990</x><y>300</y><w>170</w><h>70</h></coordinates><panel_attributes>halign=left
+bg=orange
+READ_FIXED_HEADER
+READ_VARIABLE_HEADER
+READ_PAYLOAD
+BAD_MESSAGE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>400</y><w>140</w><h>30</h></coordinates><panel_attributes>MqttMessageType
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>430</y><w>140</w><h>230</h></coordinates><panel_attributes>halign=left
+bg=orange
+CONNECT(1)
+CONNACK(2)
+PUBLISH(3)
+PUBACK(4)
+PUBREC(5)
+PUBREL(6)
+PUBCOMP(7)
+SUBSCRIBE(8)
+SUBACK(9)
+UNSUBSCRIBE(10)
+UNSUBACK(11)
+PINGREQ(12)
+PINGRESP(13)
+DISCONNECT(14)
+AUTH(15)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>400</y><w>140</w><h>30</h></coordinates><panel_attributes>MqttQoS
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>430</y><w>140</w><h>70</h></coordinates><panel_attributes>halign=left
+bg=orange
+AT_MOST_ONCE(0)
+AT_LEAST_ONCE(1)
+EXACTLY_ONCE(2)
+FAILURE(0x80)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>540</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttFixedHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>570</y><w>280</w><h>80</h></coordinates><panel_attributes>halign=left
+MqttMessageType messageType
+boolean isDup
+MqttQoS qosLevel
+boolean isRetain
+int remainingLength</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>180</y><w>210</w><h>30</h></coordinates><panel_attributes>halign=left
+DecoderState state</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>300</y><w>210</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader mqttFixedHeader
+Object variableHeader
+int bytesRemainingInVariablePart</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>780</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttConnectVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>990</y><w>300</w><h>30</h></coordinates><panel_attributes>MqttConnAckVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1400</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttMessageIdAndPropertiesVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1480</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttPubReplyMessageVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>1130</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttPublishVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1580</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttReasonCodeAndPropertiesVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>650</x><y>780</y><w>90</w><h>30</h></coordinates><panel_attributes>CONNECT
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>650</x><y>990</y><w>90</w><h>30</h></coordinates><panel_attributes>CONNACK
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>650</x><y>1400</y><w>300</w><h>30</h></coordinates><panel_attributes>UNSUBSCRIBE, SUBSCRIBE, SUBACK, UNSUBACK
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>650</x><y>1480</y><w>240</w><h>30</h></coordinates><panel_attributes>PUBACK, PUBREC, PUBCOMP, PUBREL
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>650</x><y>1130</y><w>90</w><h>30</h></coordinates><panel_attributes>PUBLISH
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>650</x><y>1590</y><w>150</w><h>30</h></coordinates><panel_attributes>DISCONNECT, AUTH
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>400</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttMessageFactory</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>480</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>510</y><w>280</w><h>50</h></coordinates><panel_attributes>halign=left
+MqttMessage PINGREQ
+MqttMessage PINGRESP
+MqttMessage DISCONNECT</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>560</y><w>280</w><h>70</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader mqttFixedHeader
+Object variableHeader
+Object payload
+DecoderResult decoderResult</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>700</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttConnectMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>810</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttConnAckMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>910</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttPublishMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1020</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttPubAckMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1100</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttSubscribeMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1210</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttSubAckMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1330</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttUnsubscribeMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1430</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttUnsubAckMessage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1430</y><w>230</w><h>30</h></coordinates><panel_attributes>MqttUnsubAckPayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1220</x><y>1250</y><w>200</w><h>30</h></coordinates><panel_attributes>MqttMessageIdVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1850</x><y>1430</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>1000</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttPropertyType
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>860</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttProperties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>890</y><w>280</w><h>70</h></coordinates><panel_attributes>halign=left
+IntObjectHashMap&lt;MqttProperty&gt; props
+List&lt;UserProperty&gt; userProperties
+List&lt;IntegerProperty&gt; subscriptionIds
+final boolean canModify</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>960</y><w>280</w><h>40</h></coordinates><panel_attributes>halign=left
+void add(MqttProperty property)
+MqttProperty getProperty(int propertyId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>1530</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttProperty&lt;T&gt;
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>1560</y><w>280</w><h>40</h></coordinates><panel_attributes>halign=left
+final T value
+final int propertyId</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>1570</y><w>130</w><h>30</h></coordinates><panel_attributes>IntegerProperty</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>1600</y><w>130</w><h>30</h></coordinates><panel_attributes>StringProperty</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>1630</y><w>130</w><h>30</h></coordinates><panel_attributes>UserProperties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>1660</y><w>130</w><h>30</h></coordinates><panel_attributes>BinaryProperty</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>1540</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1430</y><w>280</w><h>30</h></coordinates><panel_attributes>halign=left
+final MqttProperties properties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1220</x><y>1280</y><w>200</w><h>30</h></coordinates><panel_attributes>halign=left
+final int messageId</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>1300</y><w>100</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;80;110;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1510</y><w>280</w><h>40</h></coordinates><panel_attributes>halign=left
+final byte reasonCode
+final MqttProperties properties</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>1300</y><w>100</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;80;190;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1610</y><w>280</w><h>40</h></coordinates><panel_attributes>halign=left
+final byte reasonCode
+final MqttProperties properties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>1160</y><w>280</w><h>50</h></coordinates><panel_attributes>halign=left
+final String topicName
+final int packetId
+final MqttProperties properties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>680</y><w>400</w><h>30</h></coordinates><panel_attributes>MqttConnectReturnCode
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>710</y><w>400</w><h>120</h></coordinates><panel_attributes>halign=left
+bg=orange
+CONNECTION_ACCEPTED(0x00)    
+CONNECTION_REFUSED_UNACCEPTABLE_PROTOCOL_VERSION(0X01)
+CONNECTION_REFUSED_IDENTIFIER_REJECTED(0x02)
+CONNECTION_REFUSED_SERVER_UNAVAILABLE(0x03)
+CONNECTION_REFUSED_BAD_USER_NAME_OR_PASSWORD(0x04)
+CONNECTION_REFUSED_NOT_AUTHORIZED(0x05)
+......</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>1020</y><w>300</w><h>60</h></coordinates><panel_attributes>halign=left
+final MqttConnectReturnCode connectReturnCode
+final boolean sessionPresent
+final MqttProperties properties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>810</y><w>280</w><h>160</h></coordinates><panel_attributes>halign=left
+final String name
+final int version
+final boolean hasUserName
+final boolean hasPassword
+final boolean isWillRetain
+final int willQos
+final boolean isWillFlag
+final boolean isCleanSession
+final int keepAliveTimeSeconds
+final MqttProperties properties</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>700</y><w>200</w><h>30</h></coordinates><panel_attributes>MqttConnectPayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1850</x><y>700</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1710</x><y>620</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>730</y><w>280</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttConnectVariableHeader
+MqttConnectPayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>840</y><w>280</w><h>40</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttConnAckVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>940</y><w>280</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttPublishVariableHeader
+ByteBuf</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1050</y><w>280</w><h>40</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttMessageIdVariableHeader</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1130</y><w>280</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttMessageIdAndPropertiesVariableHeader
+MqttSubscribePayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1100</y><w>320</w><h>30</h></coordinates><panel_attributes>MqttSubscribePayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1850</x><y>1110</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1240</y><w>280</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttMessageIdAndPropertiesVariableHeader
+MqttSubAckPayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1210</y><w>190</w><h>30</h></coordinates><panel_attributes>MqttSubAckPayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1850</x><y>1220</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1360</y><w>280</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttMessageIdAndPropertiesVariableHeader
+MqttUnsubscribePayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1330</y><w>180</w><h>30</h></coordinates><panel_attributes>MqttUnsubscribePayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1850</x><y>1340</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>1460</y><w>280</w><h>60</h></coordinates><panel_attributes>halign=left
+MqttFixedHeader
+MqttMessageIdAndPropertiesVariableHeader
+MqttUnsubAckPayload</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1130</y><w>320</w><h>30</h></coordinates><panel_attributes>halign=left
+final List&lt;MqttTopicSubscription&gt; topicSubscriptions</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2260</x><y>1100</y><w>220</w><h>30</h></coordinates><panel_attributes>MqttTopicSubscription</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2210</x><y>1100</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2520</x><y>1160</y><w>260</w><h>50</h></coordinates><panel_attributes>halign=left
+bg=orange
+SEND_AT_SUBSCRIBE(0)
+SEND_AT_SUBSCRIBE_IF_NOT_YET_EXISTS(1)
+DONT_SEND_AT_SUBSCRIBE(2)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2520</x><y>1100</y><w>260</w><h>30</h></coordinates><panel_attributes>MqttSubscriptionOption</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2520</x><y>1130</y><w>260</w><h>30</h></coordinates><panel_attributes>RetainedHandlingPolicy
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2260</x><y>1130</y><w>220</w><h>40</h></coordinates><panel_attributes>halign=left
+final String topicFilter
+final MqttSubscriptionOption option</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2520</x><y>1210</y><w>260</w><h>70</h></coordinates><panel_attributes>halign=left
+final MqttQoS qos
+final boolean noLocal
+final boolean retainAsPublished
+final RetainedHandlingPolicy retainHandling</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2470</x><y>1100</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1240</y><w>190</w><h>30</h></coordinates><panel_attributes>halign=left
+final List&lt;Integer&gt; reasonCodes</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>730</y><w>200</w><h>100</h></coordinates><panel_attributes>halign=left
+final String clientIdentifier
+final MqttProperties willProperties
+final String willTopic
+final byte[] willMessage
+final String userName
+final byte[] password</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1360</y><w>180</w><h>30</h></coordinates><panel_attributes>halign=left
+final List&lt;String&gt; topics</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1900</x><y>1460</y><w>230</w><h>30</h></coordinates><panel_attributes>halign=left
+List&lt;Short&gt; unsubscribeReasonCodes</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>470</y><w>2170</w><h>1290</h></coordinates><panel_attributes>bg=#90EE90
+layer=-1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1710</x><y>420</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>160</y><w>320</w><h>30</h></coordinates><panel_attributes>MqttMessageBuilders</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>190</y><w>160</w><h>30</h></coordinates><panel_attributes>PublishBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>220</y><w>160</w><h>30</h></coordinates><panel_attributes>ConnectBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>280</y><w>160</w><h>30</h></coordinates><panel_attributes>SubscribeBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>310</y><w>160</w><h>30</h></coordinates><panel_attributes>UnsubscribeBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>340</y><w>160</w><h>30</h></coordinates><panel_attributes>PropertiesInitializer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>220</y><w>160</w><h>30</h></coordinates><panel_attributes>ConnAckBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1580</x><y>250</y><w>160</w><h>30</h></coordinates><panel_attributes>ConnAckPropertiesBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>190</y><w>160</w><h>30</h></coordinates><panel_attributes>PubAckBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>280</y><w>160</w><h>30</h></coordinates><panel_attributes>SubAckBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>310</y><w>160</w><h>30</h></coordinates><panel_attributes>UnsubAckBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>250</y><w>160</w><h>30</h></coordinates><panel_attributes>DisconnectBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>340</y><w>160</w><h>30</h></coordinates><panel_attributes>AuthBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>1030</y><w>280</w><h>500</h></coordinates><panel_attributes>bg=orange
+halign=left
+// single byte properties
+PAYLOAD_FORMAT_INDICATOR(0x01)
+REQUEST_PROBLEM_INFORMATION(0x17)
+REQUEST_RESPONSE_INFORMATION(0x19)
+MAXIMUM_QOS(0x24)
+RETAIN_AVAILABLE(0x25)
+WILDCARD_SUBSCRIPTION_AVAILABLE(0x28)
+SUBSCRIPTION_IDENTIFIER_AVAILABLE(0x29)
+SHARED_SUBSCRIPTION_AVAILABLE(0x2A)
+
+// two bytes properties
+SERVER_KEEP_ALIVE(0x13)
+RECEIVE_MAXIMUM(0x21)
+TOPIC_ALIAS_MAXIMUM(0x22)
+TOPIC_ALIAS(0x23)
+
+// four bytes properties
+PUBLICATION_EXPIRY_INTERVAL(0x02)
+SESSION_EXPIRY_INTERVAL(0x11)
+WILL_DELAY_INTERVAL(0x18)
+MAXIMUM_PACKET_SIZE(0x27)
+
+// Variable Byte Integer
+SUBSCRIPTION_IDENTIFIER(0x0B)
+
+// UTF-8 Encoded String properties
+CONTENT_TYPE(0x03)
+RESPONSE_TOPIC(0x08)
+ASSIGNED_CLIENT_IDENTIFIER(0x12)
+AUTHENTICATION_METHOD(0x15)
+RESPONSE_INFORMATION(0x1A)
+SERVER_REFERENCE(0x1C)
+REASON_STRING(0x1F)
+USER_PROPERTY(0x26)
+
+// Binary Data
+CORRELATION_DATA(0x09)
+AUTHENTICATION_DATA(0x16)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>980</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttCodecUtil</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1020</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttConstant</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1090</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttIdentifierRejectedException</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1130</y><w>280</w><h>30</h></coordinates><panel_attributes>MqttUnacceptableProtocolVersionException</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>400</y><w>90</w><h>30</h></coordinates><panel_attributes>MqttVersion
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>430</y><w>90</w><h>60</h></coordinates><panel_attributes>halign=left
+bg=orange
+MQTT_3_1
+MQTT_3_1_1
+MQTT_5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1250</x><y>270</y><w>210</w><h>30</h></coordinates><panel_attributes>MqttEncoder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1230</x><y>150</y><w>260</w><h>30</h></coordinates><panel_attributes>bg=blue
+MessageToMessageEncoder&lt;MqttMessage&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1340</x><y>170</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element></diagram>
