@@ -1,7 +1,47 @@
 # Security
 
-- [spring-security-oauth2](./spring-security-oauth2/README.md)
+actions:
+* [spring-security-oauth2](./spring-security-oauth2/README.md)
 
+# Cryptography
+* [Cryptography](./Cryptography.md)
+
+# Specifications
+
+## Authentication, Authorization
+
+* [OAuth 2.0](https://oauth.net/2/): RFC 6749
+* [OpenID Connect](https://openid.net/developers/specs/)
+
+# Certification
+## certbot
+* [home](https://certbot.eff.org/): My HTTP website is running 'Software' on 'System'
+* [code](https://github.com/certbot/certbot): Python
+
+> Certbot is part of EFF’s effort to encrypt the entire Internet. Secure communication over the Web relies on HTTPS, which requires the use of a digital certificate that lets browsers verify the identity of web servers (e.g., is that really google.com?). Web servers obtain their certificates from trusted third parties called certificate authorities (CAs). Certbot is an easy-to-use client that fetches a certificate from Let’s Encrypt—an open certificate authority launched by the EFF, Mozilla, and others—and deploys it to a web server.
+>
+> Anyone who has gone through the trouble of setting up a secure website knows what a hassle getting and maintaining a certificate is. Certbot and Let’s Encrypt can automate away the pain and let you turn on and manage HTTPS with simple commands. Using Certbot and Let's Encrypt is free.
+
+example:
+* [SSL 免费证书申请 - Certbot](https://www.runoob.com/http/ssl-certbot.html)
+* [使用Certbot申请免费 HTTPS 证书及自动续期](https://juejin.cn/post/7205839782381928508): with Nginx
+
+
+concepts:
+* Let's Encrypt: 一个由互联网安全研究小组（ISRG）运营的证书颁发机构（CA），它提供了一个自动化的流程来生成和更新证书.
+* certbot: 一个开源的自动化工具，用于获取和续订由 Let's Encrypt 提供的免费 SSL/TLS 证书.
+* 域名: 主域名, 泛域名
+* 证书申请
+* DNS TXT记录
+* 证书续期: 手动续期, 自动续期
+
+# IAM
+books:
+* Wilson, Yvonne / Hingnikar, Abhishek. **Solving Identity Management in Modern Applications: Demystifying OAuth 2, OpenID Connect, and SAML 2**. 2019. Apress.
+
+# Tools
+* [Falco](./Falco.md)
+* [Keycloak](./Keycloak.md)
 
 <!--
 XSS: Cross Site Script, 跨站脚本攻击
