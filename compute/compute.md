@@ -8,7 +8,7 @@
 
 - [multiprocessor](./multiprocessor/README.md)
   - Python
-    - [python-asyncio](./multiprocessor/python-asyncio/README.md)
+    - [python-asyncio](https://github.com/jargonzhou/learning-python/tree/main/books/Python%20Concurrency%20with%20asyncio)
   - C
     - [tamp-pthreads](./multiprocessor/c/tamp-pthreads/README.md)
   - Java
