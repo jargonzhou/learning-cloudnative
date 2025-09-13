@@ -1,6 +1,10 @@
 # BPF
 * [eBPF - wikipedia](https://en.wikipedia.org/wiki/EBPF)
+* [ebpf.io](https://ebpf.io/): eBPF Documentary
+* [bpf(2) — Linux manual page](https://man7.org/linux/man-pages/man2/bpf.2.html)
+* [BPF Documentation - Linux Kernel](https://www.kernel.org/doc/html/latest/bpf/index.html)
 
+books:
 * bpftrace Programming - BPF Performance Tools Chapter 5
 * Linux Observability with BPF
   * Chapter 5. BPF Utilities
@@ -136,3 +140,6 @@ clang编译C到BPF目标文件, 加载入内核.
 * slabtop: display kernel slab cache information in real time http://man7.org/linux/man-pages/man1/slabtop.1.html
 ## BPF工具
 ![](https://www.brendangregg.com/BPF/bpf_performance_tools.png)
+
+# See Also
+* [cilium](https://github.com/cilium/cilium): eBPF-based Networking, Security, and Observability

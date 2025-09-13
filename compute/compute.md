@@ -2,7 +2,7 @@
 
 - [java-reactive](./java-reactive/README.md)
 
-- [go-cloudnative](./go-cloudnative/README.md)
+- [Golang in Cloud Native](https://github.com/jargonzhou/learning-golang/tree/main/codes/cloudnative)
 
 - [event-streams](./event-streams/README.md)
 
@@ -15,5 +15,3 @@
     - [examples](./multiprocessor/java/README.md)
 
 - [serverless](./serverless/README.md)
-
-- [dapr](./dapr/REAME.md)

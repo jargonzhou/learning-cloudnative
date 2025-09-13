@@ -1,18 +1,17 @@
 # tcpdump
-* https://www.tcpdump.org/ This is the home web site of `tcpdump`, a powerful command-line packet analyzer; and `libpcap`, a portable C/C++ library for network traffic capture.
-* https://man7.org/linux/man-pages/man8/tcpdump.8.html
+* https://www.tcpdump.org/ 
+* [tcpdump(1) man page](https://www.tcpdump.org/manpages/tcpdump.1.html): dump traffic on a network
+  * [tcpdump(8) — Linux manual page](https://man7.org/linux/man-pages/man8/tcpdump.8.html)
+* [pcap-filter(7) man page](https://www.tcpdump.org/manpages/pcap-filter.7.html): packet filter syntax
 
-> Latest: tcpdump 4.99.5 (2024-08-30), libpcap 1.10.5 (2024-08-30).
-
+> This is the home web site of `tcpdump`, a powerful command-line packet analyzer; and `libpcap`, a portable C/C++ library for network traffic capture.
+> 
 > tcpdump, libpcap
 > 
-> [tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html) - dump traffic on a network
->
-> [pcap-filter](https://www.tcpdump.org/manpages/pcap-filter.7.html) - packet filter syntax
->
-> [pcap](https://www.tcpdump.org/manpages/pcap.3pcap.html) - Packet Capture library
->
-> [rpcapd](https://www.tcpdump.org/manpages/rpcapd.8.html) - capture daemon to be controlled by a remote libpcap application
+> - [tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html) - dump traffic on a network
+> - [pcap-filter](https://www.tcpdump.org/manpages/pcap-filter.7.html) - packet filter syntax
+> - [pcap](https://www.tcpdump.org/manpages/pcap.3pcap.html) - Packet Capture library
+> - [rpcapd](https://www.tcpdump.org/manpages/rpcapd.8.html) - capture daemon to be controlled by a remote libpcap application
 
 ## TCP SYN, ACK, FIN
 - [How to capture TCP SYN, ACK and FIN packets with tcpdump](https://www.xmodulo.com/capture-tcp-syn-ack-fin-packets-tcpdump.html)

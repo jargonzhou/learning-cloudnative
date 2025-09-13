@@ -1,7 +1,7 @@
 # bpftrace
 * https://github.com/iovisor/bpftrace
 
-bpftrace is a newer front end that provides a special-purpose, high-level language for developing BPF tools.
+> bpftrace is a high-level tracing language for Linux. bpftrace uses LLVM as a backend to compile scripts to eBPF-bytecode and makes use of `libbpf` and `bcc` for interacting with the Linux BPF subsystem, as well as existing Linux tracing capabilities: kernel dynamic tracing (kprobes), user-level dynamic tracing (uprobes), tracepoints, etc. The bpftrace language is inspired by awk, C, and predecessor tracers such as DTrace and SystemTap. bpftrace was created by Alastair Robertson.
 
 ## Features
 
@@ -15,7 +15,6 @@ Event Sources:
 - interval events: interval
 - PMC events: hardware
 - synthetic events: BEGIN, END
-
 
 Actions:
 
@@ -60,46 +59,46 @@ General Features:
 !echo $ROOT_PWD | sudo -S bpftrace --help
 # Tool Summary
 !curl https://raw.githubusercontent.com/bpftrace/bpftrace/refs/heads/master/tools/README.md
-|Tool|Description|
-|:---|:---|
-|bashreadline.bt| Print entered bash commands system wide.|
-|biolatency.bt| Block I/O latency as a histogram.|
-|biosnoop.bt| Block I/O tracing tool, showing per I/O latency.|
-|biostacks.bt| Show disk I/O latency with initialization stacks.|
-|bitesize.bt| Show disk I/O size as a histogram.|
-|capable.bt| Trace security capability checks.|
-|cpuwalk.bt| Sample which CPUs are executing processes.|
-|dcsnoop.bt| Trace directory entry cache (dcache) lookups.|
-|execsnoop.bt| Trace new processes via exec() syscalls.|
-|gethostlatency.bt| Show latency for getaddrinfo/gethostbyname[2] calls.|
-|killsnoop.bt| Trace signals issued by the kill() syscall.|
-|loads.bt| Print load averages.|
-|mdflush.bt| Trace md flush events.|
-|naptime.bt| Show voluntary sleep calls.|
-|opensnoop.bt| Trace open() syscalls showing filenames.|
-|oomkill.bt| Trace OOM killer.|
-|pidpersec.bt| Count new processes (via fork).|
-|runqlat.bt| CPU scheduler run queue latency as a histogram.|
-|runqlen.bt| CPU scheduler run queue length as a histogram.|
-|setuids.bt| Trace the setuid syscalls: privilege escalation.|
-|ssllatency.bt| Summarize SSL/TLS handshake latency as a histogram.|
-|sslsnoop.bt| Trace SSL/TLS handshake, showing latency and return value.|
-|statsnoop.bt| Trace stat() syscalls for general debugging.|
-|swapin.bt| Show swapins by process.|
-|syncsnoop.bt| Trace sync() variety of syscalls.|
-|syscount.bt| Count system calls.|
-|tcpaccept.bt| Trace TCP passive connections (accept()).|
-|tcpconnect.bt| Trace TCP active connections (connect()).|
-|tcpdrop.bt| Trace kernel-based TCP packet drops with details.|
-|tcplife.bt| Trace TCP session lifespans with connection details.|
-|tcpretrans.bt| Trace TCP retransmits.|
-|tcpsynbl.bt| Show TCP SYN backlog as a histogram.|
-|threadsnoop.bt| List new thread creation.|
-|undump.bt| Capture UNIX domain socket packages.|
-|vfscount.bt| Count VFS calls.|
-|vfsstat.bt| Count some VFS calls, with per-second summaries.|
-|writeback.bt| Trace file system writeback events with details.|
-|xfsdist.bt| Summarize XFS operation latency distribution as a histogram.|
+| Tool              | Description                                                  |
+| :---------------- | :----------------------------------------------------------- |
+| bashreadline.bt   | Print entered bash commands system wide.                     |
+| biolatency.bt     | Block I/O latency as a histogram.                            |
+| biosnoop.bt       | Block I/O tracing tool, showing per I/O latency.             |
+| biostacks.bt      | Show disk I/O latency with initialization stacks.            |
+| bitesize.bt       | Show disk I/O size as a histogram.                           |
+| capable.bt        | Trace security capability checks.                            |
+| cpuwalk.bt        | Sample which CPUs are executing processes.                   |
+| dcsnoop.bt        | Trace directory entry cache (dcache) lookups.                |
+| execsnoop.bt      | Trace new processes via exec() syscalls.                     |
+| gethostlatency.bt | Show latency for getaddrinfo/gethostbyname[2] calls.         |
+| killsnoop.bt      | Trace signals issued by the kill() syscall.                  |
+| loads.bt          | Print load averages.                                         |
+| mdflush.bt        | Trace md flush events.                                       |
+| naptime.bt        | Show voluntary sleep calls.                                  |
+| opensnoop.bt      | Trace open() syscalls showing filenames.                     |
+| oomkill.bt        | Trace OOM killer.                                            |
+| pidpersec.bt      | Count new processes (via fork).                              |
+| runqlat.bt        | CPU scheduler run queue latency as a histogram.              |
+| runqlen.bt        | CPU scheduler run queue length as a histogram.               |
+| setuids.bt        | Trace the setuid syscalls: privilege escalation.             |
+| ssllatency.bt     | Summarize SSL/TLS handshake latency as a histogram.          |
+| sslsnoop.bt       | Trace SSL/TLS handshake, showing latency and return value.   |
+| statsnoop.bt      | Trace stat() syscalls for general debugging.                 |
+| swapin.bt         | Show swapins by process.                                     |
+| syncsnoop.bt      | Trace sync() variety of syscalls.                            |
+| syscount.bt       | Count system calls.                                          |
+| tcpaccept.bt      | Trace TCP passive connections (accept()).                    |
+| tcpconnect.bt     | Trace TCP active connections (connect()).                    |
+| tcpdrop.bt        | Trace kernel-based TCP packet drops with details.            |
+| tcplife.bt        | Trace TCP session lifespans with connection details.         |
+| tcpretrans.bt     | Trace TCP retransmits.                                       |
+| tcpsynbl.bt       | Show TCP SYN backlog as a histogram.                         |
+| threadsnoop.bt    | List new thread creation.                                    |
+| undump.bt         | Capture UNIX domain socket packages.                         |
+| vfscount.bt       | Count VFS calls.                                             |
+| vfsstat.bt        | Count some VFS calls, with per-second summaries.             |
+| writeback.bt      | Trace file system writeback events with details.             |
+| xfsdist.bt        | Summarize XFS operation latency distribution as a histogram. |
 # Programming
 
 usage:

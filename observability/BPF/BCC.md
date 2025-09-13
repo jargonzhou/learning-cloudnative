@@ -3,10 +3,11 @@
 * [bcc Reference Guide](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md): 参考指南.
 * [bcc Python Developer Tutorial](https://github.com/iovisor/bcc/blob/master/docs/tutorial_bcc_python_developer.md): Python开发教程.
 
-BCC was the first higher-level tracing framework developed for BPF.
-
-It provides a C programming environment for writing kernel BPF code and other languages for the user-level interface: Python, Lua, and C++.
-
+> BPF Compiler Collection (BCC)
+>
+> BCC is a toolkit for creating efficient kernel tracing and manipulation programs, and includes several useful tools and examples. It makes use of extended BPF (Berkeley Packet Filters), formally known as eBPF, a new feature that was first added to Linux 3.15. Much of what BCC uses requires Linux 4.1 and above.
+>
+> BCC makes BPF programs easier to write, with kernel instrumentation in C (and includes a C wrapper around LLVM), and front-ends in Python and lua. It is suited for many tasks, including performance analysis and network traffic control.
 
 ## Features
 
@@ -124,120 +125,120 @@ tool for inspection and simple manipulation of eBPF programs and maps
 
 TODO: more examples in [link](https://github.com/iovisor/bcc/blob/master/docs/tutorial_bcc_python_developer.md)
 # 工具汇总
-|Tool|Description|
-|:---|:---|
-|argdist|函数参数的频率或直方图.Trace a function and display a histogram or frequency count of its parameter values. Uses Linux eBPF/bcc.|
-|bashreadline||
-|biolatency|以直方图形式输出磁盘I/O延迟.<br/>Summarize block device I/O latency as a histogram.|
-|biosnoop|输出每个磁盘I/O详情及其延迟.<br/>Trace block device I/O and print details incl. issuing PID.|
-|biotop||
-|bitesize||
-|bpflist|Display processes currently using BPF programs and maps.|
-|btrfsdist||
-|btrfsslower|see ext4slower|
-|cachestat|每秒输出文件系统缓存的统计信息.<br/>Statistics for linux page cache hit/miss ratios. Uses Linux eBPF/bcc.|
-|cachetop||
-|capable||
-|cobjnew||
-|cpudist|on-CPU、off-CPU任务时间的直方图.On- and off-CPU task time as a histogram.|
-|cpuunclaimed||
-|criticalstat||
-|dbslower||
-|dbstat||
-|dcsnoop||
-|dcstat||
-|deadlock||
-|deadlock.c||
-|drsnoop||
-|execsnoop|输出系统调用`execve(2)`创建的新进程.<br/>Trace new processes via exec() syscalls. Uses Linux eBPF/bcc.|
-|exitsnoop|跟踪进程退出, 展示其存活时间和退出原因.Trace all process termination (exit, fatal signal). Uses Linux eBPF/bcc.|
-|ext4dist||
-|ext4slower|查看文件系统中慢的磁盘I/O.<br/>Trace slow ext4/btrfs/xfs/zfs file operations, with per-event details.|
-|filelife||
-|fileslower||
-|filetop||
-|funccount|函数调用事件计数.Count function, tracepoint, and USDT probe calls matching a pattern. Uses Linux eBPF/bcc.|
-|funclatency||
-|funcslower||
-|gethostlatency||
-|hardirqs|硬件中断的耗时.Measure hard IRQ (hard interrupt) event time. Uses Linux eBPF/bcc.|
-|inject||
-|javacalls||
-|javaflow||
-|javagc||
-|javaobjnew||
-|javastat||
-|javathreads||
-|killsnoop||
-|klockstat||
-|llcstat|使用PMC展示LLC(last-level cache)个各进程的命中率和未命中率.Summarize CPU cache references and misses by process. Uses Linux eBPF/bcc.|
-|mdflush||
-|memleak||
-|mountsnoop||
-|mysqld_qslower||
-|nfsdist||
-|nfsslower||
-|nodegc||
-|nodestat||
-|offcputime|汇总线程阻塞及off-CPU的时间.Summarize off-CPU time by kernel stack trace. Uses Linux eBPF/bcc.|
-|offwaketime||
-|oomkill||
-|opensnoop|输出系统调用`open(2)`及其变种的调用情况.<br/>Trace open() syscalls. Uses Linux eBPF/bcc.|
-|perlcalls||
-|perlflow||
-|perlstat||
-|phpcalls||
-|phpflow||
-|phpstat||
-|pidpersec||
-|profile|CPU探查器, 用于理解消耗CPU资源的代码路径.<br/>Profile CPU usage by sampling stack traces. Uses Linux eBPF/bcc.|
-|pythoncalls||
-|pythonflow||
-|pythongc||
-|pythonstat||
-|reset-trace||
-|rubycalls||
-|rubyflow||
-|rubygc||
-|rubyobjnew||
-|rubystat||
-|runqlat|测量CPU调度器的延迟, 称为运行队列延迟. 以直方图形式输出线程等待CPU的时间.<br/>Run queue (scheduler) latency as a histogram.|
-|runqlen|采样CPU运行队列的长度, 以直方图形式展示等待运行的任务数量.Scheduler run queue length as a histogram.|
-|runqslower|列出运行队列延迟超过给定阈值的进程.Trace long process scheduling delays.|
-|shmsnoop||
-|slabratetop||
-|sofdsnoop||
-|softirqs|软件中断的耗时.Measure soft IRQ (soft interrupt) event time. Uses Linux eBPF/bcc.|
-|solisten||
-|sslsniff||
-|stackcount|产生事件的调用栈计数.Count function calls and their stack traces. Uses Linux eBPF/bcc.|
-|statsnoop||
-|syncsnoop||
-|syscount|系统调用计数.Summarize syscall counts and latencies.|
-|tclcalls||
-|tclflow||
-|tclobjnew||
-|tclstat||
-|tcpaccept|输出被动TCP连接信息.<br/>Trace TCP passive connections (accept()). Uses Linux eBPF/bcc.|
-|tcpconnect|输出主动TCP连接的信息.<br/>Trace TCP active connections (connect()). Uses Linux eBPF/bcc.|
-|tcpconnlat||
-|tcpdrop||
-|tcplife||
-|tcpretrans|输出每个TCP重传报文.<br/>Trace or count TCP retransmits and TLPs. Uses Linux eBPF/bcc.|
-|tcpstates||
-|tcpsubnet||
-|tcptop||
-|tcptracer||
-|tplist|展示内核跟踪点或USDT探针及其格式.Display kernel tracepoints or USDT probes and their formats.|
-|trace|多种源(kprobes, uprobes, tracepoints, USDT probes)的每事件跟踪.Trace a function and print its arguments or return value, optionally evaluating a filter. Uses Linux eBPF/bcc.|
-|ttysnoop||
-|vfscount||
-|vfsstat||
-|wakeuptime||
-|xfsdist||
-|xfsslower|see ext4slower|
-|zfsdist||
-|zfsslower|see ext4slower|
+| Tool           | Description                                                                                                                                                                   |
+| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| argdist        | 函数参数的频率或直方图.Trace a function and display a histogram or frequency count of its parameter values. Uses Linux eBPF/bcc.                                              |
+| bashreadline   |                                                                                                                                                                               |
+| biolatency     | 以直方图形式输出磁盘I/O延迟.<br/>Summarize block device I/O latency as a histogram.                                                                                           |
+| biosnoop       | 输出每个磁盘I/O详情及其延迟.<br/>Trace block device I/O and print details incl. issuing PID.                                                                                  |
+| biotop         |                                                                                                                                                                               |
+| bitesize       |                                                                                                                                                                               |
+| bpflist        | Display processes currently using BPF programs and maps.                                                                                                                      |
+| btrfsdist      |                                                                                                                                                                               |
+| btrfsslower    | see ext4slower                                                                                                                                                                |
+| cachestat      | 每秒输出文件系统缓存的统计信息.<br/>Statistics for linux page cache hit/miss ratios. Uses Linux eBPF/bcc.                                                                     |
+| cachetop       |                                                                                                                                                                               |
+| capable        |                                                                                                                                                                               |
+| cobjnew        |                                                                                                                                                                               |
+| cpudist        | on-CPU、off-CPU任务时间的直方图.On- and off-CPU task time as a histogram.                                                                                                     |
+| cpuunclaimed   |                                                                                                                                                                               |
+| criticalstat   |                                                                                                                                                                               |
+| dbslower       |                                                                                                                                                                               |
+| dbstat         |                                                                                                                                                                               |
+| dcsnoop        |                                                                                                                                                                               |
+| dcstat         |                                                                                                                                                                               |
+| deadlock       |                                                                                                                                                                               |
+| deadlock.c     |                                                                                                                                                                               |
+| drsnoop        |                                                                                                                                                                               |
+| execsnoop      | 输出系统调用`execve(2)`创建的新进程.<br/>Trace new processes via exec() syscalls. Uses Linux eBPF/bcc.                                                                        |
+| exitsnoop      | 跟踪进程退出, 展示其存活时间和退出原因.Trace all process termination (exit, fatal signal). Uses Linux eBPF/bcc.                                                               |
+| ext4dist       |                                                                                                                                                                               |
+| ext4slower     | 查看文件系统中慢的磁盘I/O.<br/>Trace slow ext4/btrfs/xfs/zfs file operations, with per-event details.                                                                         |
+| filelife       |                                                                                                                                                                               |
+| fileslower     |                                                                                                                                                                               |
+| filetop        |                                                                                                                                                                               |
+| funccount      | 函数调用事件计数.Count function, tracepoint, and USDT probe calls matching a pattern. Uses Linux eBPF/bcc.                                                                    |
+| funclatency    |                                                                                                                                                                               |
+| funcslower     |                                                                                                                                                                               |
+| gethostlatency |                                                                                                                                                                               |
+| hardirqs       | 硬件中断的耗时.Measure hard IRQ (hard interrupt) event time. Uses Linux eBPF/bcc.                                                                                             |
+| inject         |                                                                                                                                                                               |
+| javacalls      |                                                                                                                                                                               |
+| javaflow       |                                                                                                                                                                               |
+| javagc         |                                                                                                                                                                               |
+| javaobjnew     |                                                                                                                                                                               |
+| javastat       |                                                                                                                                                                               |
+| javathreads    |                                                                                                                                                                               |
+| killsnoop      |                                                                                                                                                                               |
+| klockstat      |                                                                                                                                                                               |
+| llcstat        | 使用PMC展示LLC(last-level cache)个各进程的命中率和未命中率.Summarize CPU cache references and misses by process. Uses Linux eBPF/bcc.                                         |
+| mdflush        |                                                                                                                                                                               |
+| memleak        |                                                                                                                                                                               |
+| mountsnoop     |                                                                                                                                                                               |
+| mysqld_qslower |                                                                                                                                                                               |
+| nfsdist        |                                                                                                                                                                               |
+| nfsslower      |                                                                                                                                                                               |
+| nodegc         |                                                                                                                                                                               |
+| nodestat       |                                                                                                                                                                               |
+| offcputime     | 汇总线程阻塞及off-CPU的时间.Summarize off-CPU time by kernel stack trace. Uses Linux eBPF/bcc.                                                                                |
+| offwaketime    |                                                                                                                                                                               |
+| oomkill        |                                                                                                                                                                               |
+| opensnoop      | 输出系统调用`open(2)`及其变种的调用情况.<br/>Trace open() syscalls. Uses Linux eBPF/bcc.                                                                                      |
+| perlcalls      |                                                                                                                                                                               |
+| perlflow       |                                                                                                                                                                               |
+| perlstat       |                                                                                                                                                                               |
+| phpcalls       |                                                                                                                                                                               |
+| phpflow        |                                                                                                                                                                               |
+| phpstat        |                                                                                                                                                                               |
+| pidpersec      |                                                                                                                                                                               |
+| profile        | CPU探查器, 用于理解消耗CPU资源的代码路径.<br/>Profile CPU usage by sampling stack traces. Uses Linux eBPF/bcc.                                                                |
+| pythoncalls    |                                                                                                                                                                               |
+| pythonflow     |                                                                                                                                                                               |
+| pythongc       |                                                                                                                                                                               |
+| pythonstat     |                                                                                                                                                                               |
+| reset-trace    |                                                                                                                                                                               |
+| rubycalls      |                                                                                                                                                                               |
+| rubyflow       |                                                                                                                                                                               |
+| rubygc         |                                                                                                                                                                               |
+| rubyobjnew     |                                                                                                                                                                               |
+| rubystat       |                                                                                                                                                                               |
+| runqlat        | 测量CPU调度器的延迟, 称为运行队列延迟. 以直方图形式输出线程等待CPU的时间.<br/>Run queue (scheduler) latency as a histogram.                                                   |
+| runqlen        | 采样CPU运行队列的长度, 以直方图形式展示等待运行的任务数量.Scheduler run queue length as a histogram.                                                                          |
+| runqslower     | 列出运行队列延迟超过给定阈值的进程.Trace long process scheduling delays.                                                                                                      |
+| shmsnoop       |                                                                                                                                                                               |
+| slabratetop    |                                                                                                                                                                               |
+| sofdsnoop      |                                                                                                                                                                               |
+| softirqs       | 软件中断的耗时.Measure soft IRQ (soft interrupt) event time. Uses Linux eBPF/bcc.                                                                                             |
+| solisten       |                                                                                                                                                                               |
+| sslsniff       |                                                                                                                                                                               |
+| stackcount     | 产生事件的调用栈计数.Count function calls and their stack traces. Uses Linux eBPF/bcc.                                                                                        |
+| statsnoop      |                                                                                                                                                                               |
+| syncsnoop      |                                                                                                                                                                               |
+| syscount       | 系统调用计数.Summarize syscall counts and latencies.                                                                                                                          |
+| tclcalls       |                                                                                                                                                                               |
+| tclflow        |                                                                                                                                                                               |
+| tclobjnew      |                                                                                                                                                                               |
+| tclstat        |                                                                                                                                                                               |
+| tcpaccept      | 输出被动TCP连接信息.<br/>Trace TCP passive connections (accept()). Uses Linux eBPF/bcc.                                                                                       |
+| tcpconnect     | 输出主动TCP连接的信息.<br/>Trace TCP active connections (connect()). Uses Linux eBPF/bcc.                                                                                     |
+| tcpconnlat     |                                                                                                                                                                               |
+| tcpdrop        |                                                                                                                                                                               |
+| tcplife        |                                                                                                                                                                               |
+| tcpretrans     | 输出每个TCP重传报文.<br/>Trace or count TCP retransmits and TLPs. Uses Linux eBPF/bcc.                                                                                        |
+| tcpstates      |                                                                                                                                                                               |
+| tcpsubnet      |                                                                                                                                                                               |
+| tcptop         |                                                                                                                                                                               |
+| tcptracer      |                                                                                                                                                                               |
+| tplist         | 展示内核跟踪点或USDT探针及其格式.Display kernel tracepoints or USDT probes and their formats.                                                                                 |
+| trace          | 多种源(kprobes, uprobes, tracepoints, USDT probes)的每事件跟踪.Trace a function and print its arguments or return value, optionally evaluating a filter. Uses Linux eBPF/bcc. |
+| ttysnoop       |                                                                                                                                                                               |
+| vfscount       |                                                                                                                                                                               |
+| vfsstat        |                                                                                                                                                                               |
+| wakeuptime     |                                                                                                                                                                               |
+| xfsdist        |                                                                                                                                                                               |
+| xfsslower      | see ext4slower                                                                                                                                                                |
+| zfsdist        |                                                                                                                                                                               |
+| zfsslower      | see ext4slower                                                                                                                                                                |
 # 所有层
 ## argdist
 
