@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kiada-cm
+  labels:
+    name: kiada-cm
+spec:
+  containers:
+  - name: kiada-cm
+    image: luksa/kiada:0.4
+    # Dockerfile ENTRYPOINT
+    command:
+      - node
+      - --cpu-prof
+      - --heap-prof
+      - app.js
+    # Dockerfile CMD
+    args:
+      - --listen-port
+      - $(LISTEN_PORT)
+    # 环境变量
+    env:
+      - name: POD_NAME
+        value: kiada
+      - name: INITIAL_STATUS_MESSAGE
+        valueFrom: # 使用ConfigMap中项
+          configMapKeyRef:
+            name: kiada-config
+            key: status-message
+            optional: true
+      - name: LISTEN_PORT
+        value: "9090"
+    ports:
+      - name: http
+        containerPort: 9090

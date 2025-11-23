@@ -1,0 +1,7 @@
+server:
+  port: 18029
+
+spring:
+  application:
+    name: skywalking-app
+

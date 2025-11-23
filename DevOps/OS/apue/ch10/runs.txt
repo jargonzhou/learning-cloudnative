@@ -1,0 +1,73 @@
+# ex_signal.c
+
+✗ ch10/ex_signal &
+[1] 91228
+✗ kill -USR1 91228
+received SIGUSR1                                                                                                                                                          
+✗ kill -USR2 91228
+received SIGUSR2                                                                                                                                                          
+✗ kill 91228
+[1]  + 91228 terminated  ch10/ex_signal 
+
+# ex_alarm_pause.c
+
+✗ ch10/ex_alarm_pause
+^Csig_int statring
+_sleep returned: 0
+
+# ex_sigpending.c
+
+✗ ch10/ex_sigpending
+^\
+SIGQUIT pending
+caught SIGQUIT
+SIGQUIT unblocked
+✗ ch10/ex_sigpending
+^\^\^\^\^\
+
+SIGQUIT pending
+caught SIGQUIT
+SIGQUIT unblocked
+
+# ex_sigaction.c
+
+✗ ch10/ex_sigaction &
+[1] 94285
+✗ kill -USR1 94285
+received SIGUSR1
+✗ kill -USR2 94285   
+received SIGUSR2                                                                                                                                                          
+✗ kill 94285      
+[1]  + 94285 terminated  ch10/ex_sigaction 
+
+# ex_sigjmp.c
+
+✗ ch10/ex_sigjmp &
+[1] 95909
+strating main:                                                                                                                         
+✗ kill -USR1 95909
+✗ in sig_alrm:  SIGALRM SIGUSR1
+finishing sig_usr1:  SIGUSR1
+ending main: 
+
+[1]  + 95909 done       ch10/ex_sigjmp
+
+# ex_sigsuspend1.c
+
+✗ ch10/ex_sigsuspend1
+program start: 
+in critical region SIGINT
+^C
+in sig_int:  SIGINT SIGUSR1
+after return from sissuppend:  SIGINT
+program exit: 
+
+# ex_sigsuspend2.c
+
+✗ ch10/ex_sigsuspend2
+^C
+interrupt
+^C
+interrupt
+^\%     
+              

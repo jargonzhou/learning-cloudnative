@@ -1,0 +1,20 @@
+server:
+  port: 18004
+  # see BasicErrorController
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+    include-path: always
+    include-stacktrace: always
+    path: /error
+    whitelabel:
+      enabled: true
+
+logging:
+  level:
+    de.codecentric.boot.admin: trace
+
+spring:
+  application:
+    name: admin-server

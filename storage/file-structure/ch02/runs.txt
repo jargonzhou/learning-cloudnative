@@ -1,0 +1,16 @@
+# listc.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch02/listc 
+warning: this program uses gets(), which is unsafe.
+Enter the name of file: ../../ch02/listc.cc
+// c stream
+#include <stdio.h>
+...
+
+# listcpp.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch02/listcpp 
+Enter the name of the file: ../../ch02/listcpp.cc
+// c++ stream class
+
+#include <fstream>

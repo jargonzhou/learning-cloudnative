@@ -1,0 +1,39 @@
+server:
+  port: 18003
+  # see BasicErrorController
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+    include-path: always
+    include-stacktrace: always
+    path: /error
+    whitelabel:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  application:
+    name: keycloak-resource-client
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak: # registrationId
+            provider: keycloak
+            client-id: authz-servlet
+            client-name: "Keycloak Resource Client"
+            client-secret: rIrYFaKcJ8uemfikX8eoEIE2Vr6ZrD9M
+            client-authentication-method: client_secret_basic
+            # 授权码模式
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://192.168.0.105:18003/login/oauth2/code/keycloak"
+            scope:
+              - openid
+              - profile
+        provider:
+          keycloak:
+            issuer-uri: http://authz.com:19001/realms/myrealm

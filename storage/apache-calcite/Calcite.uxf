@@ -1,0 +1,145 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLNote</id><coordinates><x>0</x><y>110</y><w>80</w><h>30</h></coordinates><panel_attributes>Legend
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>170</y><w>80</w><h>30</h></coordinates><panel_attributes>/Interface/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>220</y><w>80</w><h>30</h></coordinates><panel_attributes>AbstractClass
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1530</x><y>290</y><w>180</w><h>540</h></coordinates><panel_attributes>Schema.TableType
+bg=orange
+--
+TABLE
+VIEW
+FOREIGN_TABLE
+MATERIALIZED_VIEW
+INDEX
+JOIN
+SEQUENCE
+STAR
+STREAM
+TYPE
+SYSTEM_TABLE
+SYSTEM_VIEW
+SYSTEM_INDEX
+SYSTEM_TOAST_INDEX
+SYSTEM_TOAST_TABLE
+TEMPORARY_INDEX
+TEMPORARY_SEQUENCE
+TEMPORARY_TABLE
+TEMPORARY_VIEW
+LOCAL_TEMPORARY
+SYNONYM
+ALIAS
+GLOBAL_TEMPORARY
+ACCEL_ONLY_TABLE
+AUXILIARY_TABLE
+GLOBAL_TEMPORARY_TABLE
+HIERARCHY_TABLE
+INOPERATIVE_VIEW
+MATERIALIZED_QUERY_TABLE
+NICKNAME
+TYPED_TABLE
+TYPED_VIEW
+TEMPORAL_TABLE
+OTHER</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>320</y><w>80</w><h>30</h></coordinates><panel_attributes>Class</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>180</y><w>200</w><h>30</h></coordinates><panel_attributes>/java.sql.DatabaseMetaData/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>240</y><w>200</w><h>30</h></coordinates><panel_attributes>/AvaticaSpecificDatabaseMetaData/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>310</y><w>200</w><h>30</h></coordinates><panel_attributes>AvaticaDatabaseMetaData</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>200</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>260</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLNote</id><coordinates><x>60</x><y>840</y><w>80</w><h>30</h></coordinates><panel_attributes>Csv
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>370</y><w>210</w><h>90</h></coordinates><panel_attributes>/SchemaFactory/
+bg=green
+--
+Schema create(
+      SchemaPlus parentSchema,
+      String name,
+      Map&lt;String, Object&gt; operand)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>170</x><y>840</y><w>170</w><h>30</h></coordinates><panel_attributes>CsvSchemaFactory</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>170</y><w>390</w><h>140</h></coordinates><panel_attributes>/Schema/
+bg=green
+--
+Table getTable(String name)
+RelProtoDataType getType(String name)
+Collection&lt;Function&gt; getFunctions(String name)
+Schema getSubSchema(String name)
+Expression getExpression(SchemaPlus parentSchema, String name)
+boolean isMutable()
+Schema snapshot(SchemaVersion version)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>410</y><w>340</w><h>100</h></coordinates><panel_attributes>/Table/
+bg=green
+--
+RelDataType getRowType(RelDataTypeFactory typeFactory)
+Statistic getStatistic()
+Schema.TableType getJdbcTableType()
+boolean isRolledUp(String column)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>350</y><w>80</w><h>30</h></coordinates><panel_attributes>/SchemaPlus/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>710</y><w>150</w><h>30</h></coordinates><panel_attributes>AbstractTable
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>860</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvTable
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>430</y><w>150</w><h>30</h></coordinates><panel_attributes>AbstractSchema
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>300</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>500</y><w>60</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;210</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>730</y><w>110</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>300</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>840</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvSchema</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>450</y><w>30</w><h>410</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;390</additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>110</y><w>120</w><h>50</h></coordinates><panel_attributes>/Source/
+bg=green
+--
+source of data</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>550</y><w>170</w><h>30</h></coordinates><panel_attributes>/ScannableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>790</y><w>150</w><h>40</h></coordinates><panel_attributes>adapter.file
+JsonTable</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>730</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>850</y><w>150</w><h>40</h></coordinates><panel_attributes>adapter.file
+JsonScannableTable</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>820</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>1050</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvTranslatableTable</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>520</y><w>170</w><h>30</h></coordinates><panel_attributes>/QueryableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>720</y><w>170</w><h>30</h></coordinates><panel_attributes>/TranslatableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>1020</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvScannableTable</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>990</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvFilterableTable</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>400</y><w>170</w><h>30</h></coordinates><panel_attributes>/FilterableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>880</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>340</y><w>170</w><h>30</h></coordinates><panel_attributes>/CustomColumnResolvingTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>370</y><w>170</w><h>30</h></coordinates><panel_attributes>/ExtensibleTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>430</y><w>170</w><h>30</h></coordinates><panel_attributes>/ModifiableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>460</y><w>170</w><h>30</h></coordinates><panel_attributes>/ModifiableView/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>490</y><w>170</w><h>30</h></coordinates><panel_attributes>/ProjectableFilterableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>580</y><w>170</w><h>30</h></coordinates><panel_attributes>/StreamableTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>610</y><w>170</w><h>30</h></coordinates><panel_attributes>/TemporalTable/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>640</y><w>250</w><h>80</h></coordinates><panel_attributes>/TransientTable/
+bg=green
+--
+RelNode toRel(
+      RelOptTable.ToRelContext context,
+      RelOptTable relOptTable)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>500</y><w>100</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;40</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>450</y><w>30</w><h>410</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;390</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1850</x><y>350</y><w>170</w><h>30</h></coordinates><panel_attributes>/RelDataTypeFactory/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2100</x><y>0</y><w>300</w><h>380</h></coordinates><panel_attributes>/RelDataType/
+bg=green
+--
+boolean isStruct()
+List&lt;RelDataTypeField&gt; getFieldList()
+List&lt;String&gt; getFieldNames()
+int getFieldCount()
+StructKind getStructKind() // struct
+boolean isNullable()
+RelDataType getComponentType() // collection
+RelDataType getKeyType() // map
+RelDataType getValueType() // map
+RelDataType getMeasureElementType() // measure
+Charset getCharset()
+SqlCollation getCollation()
+SqlIntervalQualifier getIntervalQualifier() // interval
+int getPrecision()
+int getScale()
+SqlTypeName getSqlTypeName()
+SqlIdentifier getSqlIdentifier()
+String getFullTypeString()
+RelDataTypeFamily getFamily()
+RelDataTypePrecedenceList getPrecedenceList()
+RelDataTypeComparability getComparability()
+boolean isDynamicStruct()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1970</x><y>460</y><w>150</w><h>40</h></coordinates><panel_attributes>jdbc
+JavaRecordType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2140</x><y>460</y><w>150</w><h>40</h></coordinates><panel_attributes>sql.type
+AbstractSqlType
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>540</y><w>150</w><h>30</h></coordinates><panel_attributes>ApplySqlType
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>570</y><w>150</w><h>30</h></coordinates><panel_attributes>ArraySqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>600</y><w>150</w><h>30</h></coordinates><panel_attributes>BasicSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>630</y><w>150</w><h>30</h></coordinates><panel_attributes>FunctionSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>660</y><w>150</w><h>30</h></coordinates><panel_attributes>IntervalSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>690</y><w>150</w><h>30</h></coordinates><panel_attributes>MapSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>720</y><w>150</w><h>30</h></coordinates><panel_attributes>MeasureSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>750</y><w>150</w><h>30</h></coordinates><panel_attributes>MultisetSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2190</x><y>780</y><w>150</w><h>30</h></coordinates><panel_attributes>ObjectSqlType</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2030</x><y>370</y><w>270</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>250;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2170</x><y>490</y><w>40</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;160</additional_attributes></element><element><id>Relation</id><coordinates><x>2210</x><y>370</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2370</x><y>460</y><w>150</w><h>40</h></coordinates><panel_attributes>rel.Type
+RelDataTypeImpl
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2330</x><y>370</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2410</x><y>350</y><w>170</w><h>30</h></coordinates><panel_attributes>/RelDataTypeFamily/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2440</x><y>370</y><w>80</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>60;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2410</x><y>560</y><w>150</w><h>30</h></coordinates><panel_attributes>DynamicRecordType
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2410</x><y>620</y><w>150</w><h>30</h></coordinates><panel_attributes>DynamicRecordTypeImpl</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2590</x><y>540</y><w>150</w><h>30</h></coordinates><panel_attributes>RelCrossType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1780</x><y>510</y><w>150</w><h>30</h></coordinates><panel_attributes>RelDataTypeFactoryImpl
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1840</x><y>370</y><w>110</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1780</x><y>540</y><w>230</w><h>30</h></coordinates><panel_attributes>RelDataTypeFactoryImpl.JavaType</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2000</x><y>490</y><w>390</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>370;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2590</x><y>570</y><w>150</w><h>30</h></coordinates><panel_attributes>RelRecordType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2580</x><y>460</y><w>200</w><h>30</h></coordinates><panel_attributes>SingleColumnAliasRelDataType</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2330</x><y>370</y><w>320</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2480</x><y>490</y><w>190</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;50</additional_attributes></element><element><id>Relation</id><coordinates><x>2470</x><y>580</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>2450</x><y>490</y><w>50</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>900</y><w>150</w><h>40</h></coordinates><panel_attributes>rel.core
+TableScan
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>990</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvTableScan</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1410</x><y>930</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>990</y><w>410</w><h>90</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>390;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>960</y><w>150</w><h>30</h></coordinates><panel_attributes>CsvTableFactory</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>570</y><w>210</w><h>110</h></coordinates><panel_attributes>/TableFactory&lt;T extends Table&gt;/
+bg=green
+--
+T create(
+      SchemaPlus schema,
+      String name,
+      Map&lt;String, Object&gt; operand,
+      RelDataType rowType)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>500</y><w>130</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>110;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>670</y><w>100</w><h>310</h></coordinates><panel_attributes>lt=&lt;&lt;.
+T=CsvTable</panel_attributes><additional_attributes>20;10;10;290</additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>1880</y><w>150</w><h>30</h></coordinates><panel_attributes>HepPlanner</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>1650</y><w>170</w><h>30</h></coordinates><panel_attributes>/RelOptPlanner/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>80</x><y>1670</y><w>170</w><h>30</h></coordinates><panel_attributes>Planner and Optimizer: plan
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>1780</y><w>150</w><h>30</h></coordinates><panel_attributes>AbstractRelOptPlanner
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>1670</y><w>40</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>1800</y><w>170</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>1880</y><w>150</w><h>30</h></coordinates><panel_attributes>VolcanoPlanner</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>1800</y><w>100</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>1070</y><w>150</w><h>30</h></coordinates><panel_attributes>RelBuilder</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>60</x><y>1010</y><w>170</w><h>30</h></coordinates><panel_attributes>Relational Algebra: rel
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>2020</y><w>150</w><h>30</h></coordinates><panel_attributes>HepProgram</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>1070</y><w>80</w><h>30</h></coordinates><panel_attributes>/RelNode/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>70</x><y>1390</y><w>170</w><h>30</h></coordinates><panel_attributes>tools
+bg=pink</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>1390</y><w>290</w><h>50</h></coordinates><panel_attributes>/RelRunner/
+bg=green
+--
+PreparedStatement prepareStatement(RelNode)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>1090</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>1060</y><w>180</w><h>40</h></coordinates><panel_attributes>lt=&lt;..
+create</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>1730</y><w>170</w><h>30</h></coordinates><panel_attributes>/Context/
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>270</y><w>80</w><h>30</h></coordinates><panel_attributes>Constant
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element></diagram>

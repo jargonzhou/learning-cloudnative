@@ -1,0 +1,22 @@
+server:
+  port: 18023
+
+spring:
+  application:
+    name: function
+
+  cloud:
+    function: # FunctionProperties
+      # 主函数
+      definition: pack|label;allQuotes;randomQuote;genreQuote;logQuote
+      # 函数端点
+      web:
+        path: /func
+
+# # https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.actuator
+management:
+  server.port: ${server.port}
+  # 开启所有端点
+  endpoints.web.exposure.include: "*"
+  # 开启Actuator info端点
+  info.env.enabled: true

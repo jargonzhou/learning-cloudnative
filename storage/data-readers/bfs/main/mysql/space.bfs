@@ -1,0 +1,15 @@
+// Space file
+
+// FSP_HDR: Filespace Header / Extent Descriptor
+
+// IBUF_BITMAP: Insert Buffer Bookkeeping
+
+// INODE: Index Node Information
+
+// pages
+
+// [
+// XDES: Extent Descriptor for next 16384 pages
+// IBUF_BITMAP: IBUF bitmap for next 16384 pages
+// pages
+// ]+

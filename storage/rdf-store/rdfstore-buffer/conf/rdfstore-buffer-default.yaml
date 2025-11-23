@@ -1,0 +1,7 @@
+rdfStore:
+  buffer:
+    # total size in MB
+    totalSize: 16
+    # strategy: direct, vm
+    strategy: direct
+    

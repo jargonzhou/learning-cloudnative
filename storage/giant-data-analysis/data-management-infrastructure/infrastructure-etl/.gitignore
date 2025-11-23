@@ -1,0 +1,6 @@
+/target/
+/.settings/
+.classpath
+/src/test/resources/data/
+/src/test/resources/progress.txt
+.project

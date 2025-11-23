@@ -20,6 +20,7 @@
 * [Nmap](https://nmap.org/): Nmap ("Network Mapper") is a free and open source utility for network discovery and security auditing.
 * [Npcap](https://npcap.com/): Packet capture library for Windows. <!-- 1.83 installed. -->
 * [nwdiag](./nwdiag/nwdiag.md)
+* [Smithy](https://github.com/smithy-lang/smithy): Smithy defines and generates clients, services, and documentation for any protocol. - Java
 * [tcpdump](./tcpdump.md)
 * [Wireshark](./Wireshark/Wireshark.md)
 

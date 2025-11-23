@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.spike</groupId>
+    <artifactId>example-springcloud</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>example-springcloud</name>
+    <description>Spike project for Spring Cloud</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+
+    <modules>
+        <module>auth</module>
+        <module>admin</module>
+        <module>alibaba</module>
+        <module>persistent</module>
+        <module>framework</module>
+        <module>netflix</module>
+    </modules>
+
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+
+    <properties>
+        <java.version>17</java.version>
+        <guava.version>33.4.0-jre</guava.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <spring-boot.version>3.4.0</spring-boot.version>
+        <spring-boot-admin.version>3.4.4</spring-boot-admin.version>
+        <mybatis-spring-boot.verion>3.0.4</mybatis-spring-boot.verion>
+        <mysql-connector-j.version>8.0.32</mysql-connector-j.version>
+        <springdoc-openapi-starter.version>2.8.5</springdoc-openapi-starter.version>
+        <lombok.version>1.18.36</lombok.version>
+
+        <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
+        <seata-spring-boot.version>1.8.0</seata-spring-boot.version>
+        <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
+        <dubbo.version>3.3.4</dubbo.version>
+        <sentinel.version>1.8.8</sentinel.version>
+
+        <hsqldb.version>2.7.4</hsqldb.version>
+        <h2.version>2.3.232</h2.version>
+        <shardingsphere-jdbc.version>5.5.2</shardingsphere-jdbc.version>
+
+        <!-- issue: https://github.com/GoogleContainerTools/jib/issues/4046 -->
+        <!-- <jib-maven-plugin.version>3.4.4</jib-maven-plugin.version> -->
+        <jib-maven-plugin.version>3.4.2</jib-maven-plugin.version>
+
+        <testcontainers.version>1.20.6</testcontainers.version>
+        <r2dbc-mysql.version>1.4.0</r2dbc-mysql.version>
+        <okhttp.mockwebserver.version>4.12.0</okhttp.mockwebserver.version>
+
+        <rxjava.version>3.1.10</rxjava.version>
+
+        <loki-logback-appender.version>1.6.0</loki-logback-appender.version>
+        <micrometer-registry-prometheus.version>1.14.1</micrometer-registry-prometheus.version>
+        <opentelemetry-javaagent.version>2.14.0</opentelemetry-javaagent.version>
+
+        <skywalking.agent.version>9.4.0</skywalking.agent.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency> <!-- Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency> <!-- Spring Cloud -->
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <dependency> <!-- Testcontainers -->
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths> <!-- Lombok -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

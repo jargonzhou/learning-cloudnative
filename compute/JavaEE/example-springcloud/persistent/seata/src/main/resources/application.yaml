@@ -1,0 +1,25 @@
+server:
+  port: 18008
+
+logging:
+  level:
+    io.seata: trace
+
+spring:
+  application:
+    name: seata-app
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/app?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: seata
+
+seata:
+  application-id: seata-app
+  # 事务服务组
+  tx-service-group: my_test_tx_group
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml

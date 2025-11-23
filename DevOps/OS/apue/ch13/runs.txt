@@ -1,0 +1,49 @@
+# daemon
+
+✗ PATH="$PATH:."
+✗ ch13/daemon
+✗ ps -efj | grep daemon
+  501 24223     1   0 10:43PM ??         0:00.00 ch13/daemon      zhang            24222      0    0 S      ?? 
+✗ sudo dtruss -p 24223
+dtrace: system integrity protection is on, some features will not be available
+
+SYSCALL(args)            = return
+__semwait_signal(0x703, 0x0, 0x1)                = -1 60
+__semwait_signal(0x703, 0x0, 0x1)                = -1 60
+__semwait_signal(0x703, 0x0, 0x1)                = -1 60
+^C
+
+✗ 
+✗ sudo kill -9 24223
+✗ ps -efj | grep daemon
+✗
+
+# singleton.c
+
+$ sudo ch13/singleton &
+[1] 10132
+$ not running
+
+$ sudo ch13/singleton &
+[2] 10134
+$ already running
+
+[2]+  Exit 1                  sudo ch13/singleton
+$ ps -ef | grep singleton
+root     10132   265  0 16:51 pts/2    00:00:00 sudo ch13/singleton
+root     10133 10132  0 16:51 pts/2    00:00:00 ch13/singleton
+
+# reread.c
+
+✗ ch13/reread    
+......................Re-reading configuration file
+in reread
+......Re-reading configuration file
+in reread
+
+In another session:
+
+✗ ps -ef | grep reread
+  501 22232 95247   0 10:26PM ttys002    0:00.01 ch13/reread
+✗ kill -HUP 22232
+✗ kill -HUP 22232

@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package rdfstore;
+
+import "LogicObjectStructure.proto";
+import "ProcessStructure.proto";
+import "WALStructure.proto";
+option java_package = "generated.filesystem";
+option java_outer_classname = "FileStructureProtos";
+
+//---------------------------------------------------------------------------
+// 文件相关数据结构定义
+//---------------------------------------------------------------------------
+// 文件类型
+enum FileType {
+	CATALOG_FILE = 0;
+	DATA_FILE = 1; // 数据文件
+	INDEX_FILE = 2; // 索引文件
+	CONTROL_FILE = 3; // 控制文件
+	REDO_LOG_FILE = 4; // 重做日志文件
+}
+
+// 数据文件头部
+message DataFileHeader {
+	uint32 magicNumber = 1; // 42
+	FileType fileType = 2;
+}
+
+//---------------------------------------------------------------------------
+// 数据块
+//---------------------------------------------------------------------------
+
+// 块标识符
+message BlockId {
+	uint32 blockId = 1;
+}
+
+// 数据块头部.
+message BlockHeader {
+	bool flip = 1;
+	FileNo fileno = 2;
+	BlockId blockno = 3;
+}
+
+// 数据块.
+message Block {
+	BlockHeader header = 1;
+	bytes contents = 2;
+	bool flop = 3;
+}
+
+//---------------------------------------------------------------------------
+// 页
+//---------------------------------------------------------------------------
+
+// 页类型.
+enum PageType {
+	DATA_PAGE = 0; // 仅包含一个文件(关系)的元组
+	INDEX_PAGE = 1; // 包含一个索引文件的节点
+	FREESPACE_PAGE = 2; // 包含空闲区管理表
+	DIRECTORY_PAGE = 3; // 包含关于本文件或其他文件的元数据
+	CLUSTER_PAGE = 4; // 包含多个关系的元组
+	TABLE_PAGE = 5; // 包含一些管理性(如寻址)的表
+}
+
+// 页状态.
+enum PageState {
+	VALID = 0;
+	INVALID = 1;
+	INDOUBT = 2;
+	SHADOW = 3;
+}
+
+// 页标识符.
+message PageId {
+	FileNo fileno = 1;
+	uint32 pageno = 2;
+}
+
+// 页头部.
+message PageHeader {
+	PageId thatsme = 1; // 页标识符
+	PageType pageType = 2; // 页类型
+	LogicObjectId object_id = 3; // 关系、索引等的内部ID
+	LSN safeUpto = 4; // 用于WAL协议的页面LSN
+	// 是否可用于空闲页链表???
+	PageId previous = 5; // 通常页面在双链表中
+	PageId next = 6;
+	PageState status = 7;
+	int32 noEntries = 8; // 页目录中项数量
+	int32 unused = 9; // 未使用的非连续空闲区字节数
+	int32 freespace = 10; // 用于有效负荷的连续空闲字节数
+	bytes stuff = 11; // 会不断增长
+}
+
+// 页目录.
+message PageDirectory {
+	repeated int32 offsetInPage = 1; // indexed backwards
+}
+
+// 页.
+message Page {
+	PageHeader header = 1;
+	bytes body = 2;
+	PageDirectory directory = 3;
+}
+
+//---------------------------------------------------------------------------
+// 管理性结构
+//---------------------------------------------------------------------------
+
+// 文件访问模式
+enum FileAccessMode {
+	READ = 0;
+	WRITE = 1;
+	APPEND = 2;
+}
+
+// 文件号: 文件存在期间, 唯一的确定文件.
+message FileNo {
+	uint32 fileNo = 1;
+}
+
+// 文件目录: P.759
+message FileCatalog {
+	FileNo fileno = 1;
+	string fileName = 2;
+
+	// 游标方式空闲页管理(是否使用???)
+	PageId emptyPageAnchor = 3; // 空闲页链锚点
+	PageId pointOfInsert = 4; // 当前可插入页
+}
+
+// 文件句柄(文件打开时有效)
+// see
+message FileId {
+	FileNo fileno = 1;
+	FileAccessMode accessMode = 2;
+	ClientId clientId = 3;
+}
+
+
+
+
+

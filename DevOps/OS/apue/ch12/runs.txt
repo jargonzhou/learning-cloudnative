@@ -1,0 +1,45 @@
+# ex_pthread_attr.c
+
+$ ch12/ex_pthread_attr
+support _POSIX_THREAD_ATTR_STACKSIZE
+attr statcksize=8388608
+tid 140642551559936 start
+tid 140642551559936 statcksize=8388608
+tid 140642551559936 end
+
+# ex_mutex_attr.c
+
+$ ch12/ex_mutex_attr
+timeout_helper start
+in retry
+timeout_helper end
+
+# getenv1.c, getenv2.c
+
+$ ch12/getenv1
+v=/bin/bash
+$ ch12/getenv2
+buf=/bin/bash
+$ ch12/getenv3
+v=/bin/bash
+
+# ex_pthread_signal.c
+
+$ ch12/ex_pthread_signal
+^C
+interrupt
+^C
+interrupt
+^\$ 
+
+# ex_pthread_atfork.c
+
+$ ch12/ex_pthread_atfork
+thread started...
+parent about to fork...
+preparing locks...
+parent unlocking locks...
+parent returned from fork
+child unlocking locks...
+child returned from fork
+

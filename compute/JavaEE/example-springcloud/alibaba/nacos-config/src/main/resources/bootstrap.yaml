@@ -1,0 +1,14 @@
+# Since Spring Boot 2.4: spring.config.import is mandantory
+#
+#spring:
+#  application:
+#    name: nacos-client
+#  cloud:
+#    # see com.alibaba.cloud.nacos.NacosConfigProperties
+#    nacos:
+#      serverAddr: 127.0.0.1:8848
+#      username: 'nacos'
+#      password: 'nacos'
+#      group: DEFAULT_GROUP
+#      file-extension: yaml
+#

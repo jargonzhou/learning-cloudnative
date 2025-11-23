@@ -1,0 +1,10 @@
+server:
+  port: 18009
+
+spring:
+  application:
+    name: springdoc-openapi
+
+# see org.springdoc.core.properties.SpringDocConfigProperties
+springdoc:
+  packagesToScan: com.spike.springcloud.admin.doc.web

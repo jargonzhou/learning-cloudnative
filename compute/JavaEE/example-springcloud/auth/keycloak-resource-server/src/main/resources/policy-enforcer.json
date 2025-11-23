@@ -1,0 +1,8 @@
+{
+  "realm": "myrealm",
+  "auth-server-url": "http://authz.com:19001",
+  "resource": "authz-servlet",
+  "credentials": {
+    "secret": "rIrYFaKcJ8uemfikX8eoEIE2Vr6ZrD9M"
+  }
+}

@@ -1,0 +1,12 @@
+server:
+  port: 18030
+
+spring:
+  application:
+    name: shardingsphere-app
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    url: jdbc:shardingsphere:classpath:shardingsphere-jdbc.yaml
+
+mybatis:
+  mapper-locations: classpath*:mappers/*Mapper.xml

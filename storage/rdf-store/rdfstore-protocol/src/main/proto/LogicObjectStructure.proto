@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package rdfstore;
+
+option
+java_package = "generated.filesystem";
+option java_outer_classname = "LogicObjectStructureProtos";
+
+//---------------------------------------------------------------------------
+// 逻辑数据结构定义
+//---------------------------------------------------------------------------
+
+// 区段.
+message Extent {
+	int32 todo = 1;
+}
+
+// 片段.
+message Segment {
+	int32 todo = 1;
+}
+
+message VectorId {
+	int64 id = 1;
+}
+
+message EdgeId {
+	int64 id = 1;
+}
+
+message GraphId {
+	int64 id = 1;
+}
+
+// 图空间.
+message Graphspace {
+	GraphId graphId = 1;
+	string name = 2;
+}
+
+message LogicObjectId {
+	int32 todo = 1;
+}
+
+//---------------------------------------------------------------------------
+// RDF数据结构定义.
+//---------------------------------------------------------------------------
+message RDFNamespace {
+	string ns = 1; // UTF-8 encoded or 7-bit ASCII text
+}
+
+message RDFSubject {
+	RDFNamespace ns = 1;
+	VectorId id = 2;
+}
+
+message RDFPredicate {
+	RDFNamespace ns = 1;
+	EdgeId id = 2;
+}
+
+message RDFObject {
+	RDFNamespace ns = 1;
+	VectorId id = 2;
+}
+
+message RDFTriple {
+	RDFSubject s = 1;
+	RDFPredicate p = 2;
+	RDFObject o = 3;
+}
+
+
+
+

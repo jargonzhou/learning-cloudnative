@@ -1,0 +1,22 @@
+services:
+  grafana-app:
+    image: dev/grafana-app
+    container_name: grafana-app
+    labels:
+      app.language: Java
+      app.type: Backend
+    ports: # DEPLOY_ENV
+      - 18028:18028
+    environment:
+      # https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/
+      - OTEL_SERVICE_NAME=grafana-app
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://tempo:4317
+      - OTEL_LOGS_EXPORTER=none
+      - OTEL_METRICS_EXPORTER=none
+    networks:
+      - apm-network
+
+networks:
+  apm-network:
+    external: true

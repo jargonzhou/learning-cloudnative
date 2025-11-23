@@ -1,0 +1,12 @@
+.classpath
+
+.project
+
+.settings/
+
+target/
+
+/_bsp/
+/output/
+aggregatorValues_*
+.aggregatorValues_*

@@ -1,0 +1,28 @@
+server:
+  port: 18000
+  # see BasicErrorController
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+    include-path: always
+    include-stacktrace: always
+    path: /error
+    whitelabel:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  application:
+    name: resource-server
+  security:
+    oauth2:
+      # 配置资源服务器: org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
+      resourceserver:
+        # 配置JwtDecoder
+        jwt:
+#          issuer-uri: http://127.0.0.1:19000
+          issuer-uri: http://authz.com:19000

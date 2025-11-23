@@ -1,0 +1,29 @@
+server:
+  port: 18007
+
+logging:
+  level:
+    com.alibaba.cloud.nacos: trace
+
+spring:
+  application:
+    name: nacos-discovery-client
+  cloud:
+    loadbalancer:
+      nacos:
+        enabled: true
+    # 配置说明: https://github.com/alibaba/spring-cloud-alibaba/wiki/Nacos-discovery
+    # see com.alibaba.cloud.nacos.NacosDiscoveryProperties
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        #        username: 'nacos'
+        #        password: 'nacos'
+        group: DEFAULT_GROUP
+        namespace: example
+        file-extension: yaml
+    # OpenFeign配置
+    openfeign:
+      circuitbreaker:
+        enabled: true
+

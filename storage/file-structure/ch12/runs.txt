@@ -1,0 +1,46 @@
+# test_hash.cc
+
+Insert: bill    recAddr=100
+hash=
+00000000000000000000001101101100 = 876
+address=
+00000000000000000011011011000000 = 14016
+Directory _depth=0, _numCells=1
+bucket [0] addr=66 Bucket depth=0 text Index _maxKeys=4, _numKeys=1
+        Key[0]=bill RecAddr=100
+
+...
+
+Insert: emily   recAddr=114
+hash=
+00000000000000000011001010110100 = 12980
+address=
+00000000000000000010110101001100 = 11596
+Directory _depth=3, _numCells=8
+bucket [0] addr=66 Bucket depth=3 text Index _maxKeys=4, _numKeys=2
+        Key[0]=joan RecAddr=110
+        Key[1]=lee RecAddr=101
+bucket [1] addr=426 Bucket depth=3 text Index _maxKeys=4, _numKeys=3
+        Key[0]=bill RecAddr=100
+        Key[1]=emily RecAddr=114
+        Key[2]=john RecAddr=111
+bucket [2] addr=282 Bucket depth=2 text Index _maxKeys=4, _numKeys=2
+        Key[0]=alan RecAddr=103
+        Key[1]=elizabeth RecAddr=106
+bucket [3] addr=282 Bucket depth=2 text Index _maxKeys=4, _numKeys=2
+        Key[0]=alan RecAddr=103
+        Key[1]=elizabeth RecAddr=106
+bucket [4] addr=138 Bucket depth=3 text Index _maxKeys=4, _numKeys=3
+        Key[0]=charles RecAddr=112
+        Key[1]=julie RecAddr=104
+        Key[2]=peter RecAddr=109
+bucket [5] addr=354 Bucket depth=3 text Index _maxKeys=4, _numKeys=3
+        Key[0]=mary RecAddr=113
+        Key[1]=mike RecAddr=105
+        Key[2]=pauline RecAddr=102
+bucket [6] addr=210 Bucket depth=2 text Index _maxKeys=4, _numKeys=2
+        Key[0]=ashley RecAddr=108
+        Key[1]=mark RecAddr=107
+bucket [7] addr=210 Bucket depth=2 text Index _maxKeys=4, _numKeys=2
+        Key[0]=ashley RecAddr=108
+        Key[1]=mark RecAddr=107

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package rdfstore;
+
+option
+java_package = "generated.txn";
+option java_outer_classname = "TransactionStructureProtos";
+message ProcessId {
+	uint32 id = 1;
+}
+
+// Process Control Block
+message ProcessCB {
+	ProcessId pid = 1;
+	// ???
+	repeated ProcessCB semWait = 2;
+}
+
+// 锁类型.
+enum LockMode {
+	LOCK_FREE = 0; // 空闲的
+	LOCK_S = 1; // 共享型
+	LOCK_X = 2; // 排他型
+	LOCK_U = 3; // 更新型
+	LOCK_IS = 4; // 意向共享型
+	LOCK_IX = 5; // 意向排他型
+	LOCK_SIX = 6; // 共享意向排他型
+	LOCK_WAIT = 7; // 锁等待
+}
+
+// 信号量.
+message SemaphoreRepr {
+	LockMode mode = 1;
+	uint32 count = 2; // 0: FREE, 1: X, >= 1: S
+	repeated ProcessCB waitList = 3;
+}

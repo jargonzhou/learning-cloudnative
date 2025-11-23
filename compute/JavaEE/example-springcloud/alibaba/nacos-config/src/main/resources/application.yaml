@@ -1,0 +1,36 @@
+server:
+  port: 18006
+
+logging:
+  level:
+    com.alibaba.cloud.nacos: trace
+
+spring:
+  application:
+    name: nacos-client
+  config:
+    # https://nacos.io/blog/faq/nacos-user-question-history15396/
+    # https://github.com/alibaba/spring-cloud-alibaba/pull/2349
+    # https://stackoverflow.com/questions/67507452/no-spring-config-import-property-has-been-defined
+    import:
+      # 替代extension-configs, shared-configs
+      - nacos:common.yaml
+      - nacos:nacos-client.yaml
+  cloud:
+    # 配置说明: https://github.com/alibaba/spring-cloud-alibaba/wiki/Nacos-config
+    # see com.alibaba.cloud.nacos.NacosConfigProperties
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+#        username: 'nacos'
+#        password: 'nacos'
+        group: DEFAULT_GROUP
+        namespace: example
+        file-extension: yaml
+      discovery:
+        server-addr: 127.0.0.1:8848
+        #        username: 'nacos'
+        #        password: 'nacos'
+        group: DEFAULT_GROUP
+        namespace: example
+        file-extension: yaml

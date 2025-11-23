@@ -1,0 +1,25 @@
+server:
+  port: 18014
+
+spring:
+  application:
+    name: eureka-server
+
+# server: org.springframework.cloud.netflix.eureka.server.EurekaServerAutoConfiguration
+eureka:
+  # see org.springframework.cloud.netflix.eureka.server.EurekaServerConfigBean
+  server:
+    # see org.springframework.cloud.netflix.eureka.server.metrics.EurekaInstanceMetricsAutoConfiguration
+    metrics:
+      enabled: true
+  # see org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+  # see org.springframework.cloud.netflix.eureka.EurekaClientConfigBean
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      # standalone mode
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

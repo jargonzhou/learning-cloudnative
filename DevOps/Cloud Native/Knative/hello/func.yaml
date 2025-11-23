@@ -1,0 +1,12 @@
+specVersion: 0.36.0
+name: hello
+runtime: go
+registry: docker.io/zhoujiagen
+image: docker.io/zhoujiagen/hello
+namespace: default
+created: 2025-03-13T11:27:01.7426786+08:00
+build:
+  builder: pack
+deploy:
+  namespace: default
+  image: docker.io/zhoujiagen/hello

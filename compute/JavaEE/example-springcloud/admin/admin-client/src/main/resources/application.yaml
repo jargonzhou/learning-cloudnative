@@ -1,0 +1,39 @@
+server:
+  port: 18005
+  # see BasicErrorController
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+    include-path: always
+    include-stacktrace: always
+    path: /error
+    whitelabel:
+      enabled: true
+
+logging:
+  # 日志路径和名称
+  file.name: logs/admin-client.log
+  level:
+    de.codecentric.boot.admin: trace
+
+spring:
+  application:
+    name: admin-client
+#  security:
+#    user:
+#      name: user
+#      password: password
+  boot:
+    admin:
+      # admin server的URL
+      client.url: http://127.0.0.1:18004
+
+# https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.actuator
+management:
+  server.port: 18005
+  # 开启所有端点
+  endpoints.web.exposure.include: "*"
+  # 开启Actuator info端点
+  info.env.enabled: true
+

@@ -1,0 +1,69 @@
+server:
+  port: 18011
+
+logging:
+  # use Logback
+  config: classpath:logback.xml
+
+spring:
+  datasource: # see org.springframework.boot.autoconfigure.jdbc.DataSourceProperties
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class: com.mysql.cj.jdbc.Driver
+    # more: https://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html
+    url: jdbc:mysql://localhost:3306/devops?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: change_me
+    # Druid 数据源配置，继承spring.datasource.* 配置，相同则覆盖
+    # doc: https://github.com/alibaba/druid/wiki/DruidDataSource%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E5%88%97%E8%A1%A8
+    # see: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper
+    # example: see https://github.com/alibaba/druid/blob/master/druid-spring-boot-3-starter/src/test/resources/application.properties
+    druid:
+      # 初始大小, 最小, 最大
+      initial-size: 2
+      max-active: 100
+      min-idle: 2
+      # 获取连接等待超时时间
+      max-wait: 10000
+      # PSCache
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 5
+      # max-open-prepared-statements= #等价于上面的max-pool-prepared-statement-per-connection-size
+      # 检测语句
+      validation-query: select 1
+      validation-query-timeout: 1
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: true
+      # 检测关闭空闲连接的间隔
+      time-between-eviction-runs-millis: 60000
+      # 连接在池中最小存活时间
+      min-evictable-idle-time-millis: 300000
+      # 异步关闭连接
+      async-close-connection-enable: true
+
+      # filter: see com.alibaba.druid.spring.boot.autoconfigure.stat.DruidFilterConfiguration
+#      filters: stat,slf4j
+      filter:
+        stat:
+          enabled: true # 默认关闭
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 2000
+        slf4j:
+          enabled: true
+          statement-log-sql-pretty-format: false
+
+      # stat: see com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties
+      # aop-patterns: com.alibaba.druid.spring.boot.demo.service.*
+      # 配置下面参数用于启动监控页面，考虑安全问题，默认是关闭的，按需开启
+      stat-view-servlet:
+        enabled: true
+      web-stat-filter:
+        enabled: true
+
+mybatis:
+  mapper-locations:
+    - classpath:mapping/*.xml
+    - classpath:mapping/autogen/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

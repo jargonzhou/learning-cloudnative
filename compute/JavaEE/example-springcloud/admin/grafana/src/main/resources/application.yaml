@@ -1,0 +1,30 @@
+server:
+  port: 18028
+
+logging:
+  # use Loki Logback
+  config: classpath:loki-logback.xml
+  pattern: # Tempo
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
+spring:
+  application:
+    name: grafana-app
+
+# https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.actuator
+management:
+  server.port: ${server.port}
+  endpoints:
+    web:
+      exposure:
+#        include: health, metrics
+        include: health, prometheus
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}

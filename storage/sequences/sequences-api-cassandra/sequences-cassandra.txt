@@ -1,0 +1,20 @@
+cqlsh> create KEYSPACE playground WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+cqlsh> use playground;
+
+cqlsh:playground> create table sequence(
+  name text,
+  current_value counter,
+  primary key(name));
+cqlsh:playground> update sequence set current_value = current_value + 0 where name = 'GLOBAL';
+cqlsh:playground> select * from sequence;
+
+ name   | current_value
+--------+---------------
+ GLOBAL |             0
+ 
+ cqlsh:playground> update sequence set current_value = current_value + 1 where name = 'GLOBAL';
+ cqlsh:playground> select * from sequence;
+
+  name   | current_value
+ --------+---------------
+  GLOBAL |             1

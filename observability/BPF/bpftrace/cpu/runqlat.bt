@@ -1,0 +1,62 @@
+// run queue latency
+
+#include <linux/sched.h>
+
+BEGIN
+{
+  printf("Tracing CPU scheduler... Hit Ctrl-C to end.\n");
+}
+
+tracepoint:sched:sched_wakeup,
+tracepoint:sched:sched_wakeup_new
+{
+  @qtime[args->pid] = nsecs;
+}
+
+// prev_pid => next_pid
+tracepoint:sched:sched_switch
+{
+  if (args->prev_state == TASK_RUNNING) {
+    @qtime[args->prev_pid] = nsecs;
+  }
+
+  $ns = @qtime[args->next_pid];
+  if ($ns) {
+    @usecs = hist((nsecs - $ns) / 1000);
+  }
+  delete(@qtime[args->next_pid]);
+}
+
+END
+{
+  clear(@qtime);
+}
+
+
+
+
+/*
+$ sudo bpftrace runqlat.bt
+[sudo] password for zhoujiagen:
+Attaching 5 probes...
+Tracing CPU scheduler... Hit Ctrl-C to end.
+^C
+
+
+@usecs:
+[0]                   38 |@@@@                                                |
+[1]                   62 |@@@@@@@                                             |
+[2, 4)                69 |@@@@@@@@                                            |
+[4, 8)               124 |@@@@@@@@@@@@@@                                      |
+[8, 16)              291 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                  |
+[16, 32)             441 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[32, 64)             187 |@@@@@@@@@@@@@@@@@@@@@@                              |
+[64, 128)             60 |@@@@@@@                                             |
+[128, 256)            27 |@@@                                                 |
+[256, 512)            18 |@@                                                  |
+[512, 1K)              2 |                                                    |
+[1K, 2K)               4 |                                                    |
+[2K, 4K)               2 |                                                    |
+[4K, 8K)               2 |                                                    |
+[8K, 16K)              1 |                                                    |
+*/

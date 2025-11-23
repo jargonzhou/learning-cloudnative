@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kiada
+spec:
+  # 结束时间
+  terminationGracePeriodSeconds: 5
+  containers:
+    - name: kinda
+      image: luksa/kiada:0.1
+      imagePullPolicy: Always
+      ports:
+       - containerPort: 8080

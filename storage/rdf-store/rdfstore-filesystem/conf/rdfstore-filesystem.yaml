@@ -1,0 +1,4 @@
+rdfStore:
+  fileSystem:
+    root: /tmp/rdfstore
+    catalogRoot: /tmp/rdfstore/catalog

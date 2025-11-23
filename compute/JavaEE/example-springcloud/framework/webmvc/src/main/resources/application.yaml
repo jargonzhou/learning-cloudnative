@@ -1,0 +1,37 @@
+server:
+  port: 18020
+  # 内嵌Tomcat配置: https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.server.server.tomcat.accept-count
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads:
+      max: 50
+      min-spare: 5
+
+logging:
+  level:
+    org.springframework.jdbc: DEBUG
+
+spring:
+  application:
+    name: webmvc
+  # 数据源: see org.springframework.boot.autoconfigure.jdbc.DataSourceProperties
+  datasource:
+    # org.springframework.boot.jdbc.DataSourceBuilder.MappedDataSourceProperties.lookupPooled
+    type: com.zaxxer.hikari.HikariDataSource # 默认
+    driver-class: com.mysql.cj.jdbc.Driver
+    # more: https://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html
+    url: jdbc:mysql://localhost:3306/devops?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: change_me
+    # 连接池
+    hikari: # https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.data.spring.datasource.hikari
+      # 从池中获取连接超时时间
+      connection-timeout: 2000
+      # 池中连接最大数量
+      maximum-pool-size: 10
+  # 数据库初始化: https://docs.spring.io/spring-boot/how-to/data-initialization.html
+  sql:
+    init:
+#      mode: always
+      mode: never

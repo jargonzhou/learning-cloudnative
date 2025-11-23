@@ -1,0 +1,206 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.spike.giantdataanalysis</groupId>
+		<artifactId>data-representation</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>representation-titan</artifactId>
+
+	<properties>
+		<titan.cassandra.version>2.1.9</titan.cassandra.version>
+		<!-- <titan.hbase.version>1.0.3</titan.hbase.version> -->
+		<titan.hbase.version>0.98.2-hadoop1</titan.hbase.version>
+		<titan.tinkerpop.version>3.0.1-incubating</titan.tinkerpop.version>
+		<titan.elasticsearch.version>1.5.2</titan.elasticsearch.version>
+		<titan.solr.version>5.2.1</titan.solr.version>
+	</properties>
+
+	<dependencies>
+		<!-- core, all, cassandra, hbase, berkeleyje, es, lucene -->
+
+		<!-- core -->
+		<dependency>
+			<groupId>com.thinkaurelius.titan</groupId>
+			<artifactId>titan-core</artifactId>
+			<version>${titan.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tinkerpop</groupId>
+					<artifactId>gremlin-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-configuration</groupId>
+					<artifactId>commons-configuration</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tinkerpop</groupId>
+			<artifactId>gremlin-core</artifactId>
+			<version>${titan.tinkerpop.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>gossip</artifactId>
+					<groupId>org.sonatype.gossip</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>jcl-over-slf4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.jcabi</groupId>
+					<artifactId>jcabi-manifests</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.10</version><!--$NO-MVN-MAN-VER$ -->
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- hbase: REF lib dir in distribution -->
+		<dependency>
+			<groupId>com.thinkaurelius.titan</groupId>
+			<artifactId>titan-hbase</artifactId>
+			<version>${titan.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>${titan.hbase.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-common</artifactId>
+			<version>${titan.hbase.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-protocol</artifactId>
+			<version>${titan.hbase.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thinkaurelius.titan</groupId>
+			<artifactId>titan-hadoop</artifactId>
+			<version>${titan.version}</version>
+		</dependency>
+
+		<!-- cassandra -->
+		<!-- <dependency> <groupId>com.thinkaurelius.titan</groupId> <artifactId>titan-cassandra</artifactId>
+			<version>${titan.version}</version> <exclusions> <exclusion> <groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId> </exclusion> <exclusion> <groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId> </exclusion> <exclusion> <groupId>org.apache.cassandra</groupId>
+			<artifactId>cassandra-all</artifactId> </exclusion> </exclusions> </dependency>
+			<dependency> <groupId>org.apache.cassandra</groupId> <artifactId>cassandra-all</artifactId>
+			<version>2.1.9</version> <exclusions> <exclusion> <groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId> </exclusion> <exclusion> <groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId> </exclusion> <exclusion> <groupId>com.addthis.metrics</groupId>
+			<artifactId>reporter-config</artifactId> </exclusion> </exclusions> </dependency>
+			<dependency> <groupId>com.addthis.metrics</groupId> <artifactId>reporter-config</artifactId>
+			<version>2.1.0</version> <exclusions> <exclusion> <groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId> </exclusion> </exclusions> </dependency>
+			<dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator</artifactId>
+			<version>4.3.0.Final</version> <exclusions> <exclusion> <groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId> </exclusion> </exclusions> </dependency> -->
+
+		<!-- lucene -->
+		<!-- <dependency> <groupId>com.thinkaurelius.titan</groupId> <artifactId>titan-lucene</artifactId>
+			<version>${titan.version}</version> </dependency> -->
+
+		<!-- solr -->
+		<!-- <dependency> <groupId>com.thinkaurelius.titan</groupId> <artifactId>titan-solr</artifactId>
+			<version>${titan.version}</version> <exclusions> <exclusion> <groupId>org.apache.solr</groupId>
+			<artifactId>solr-core</artifactId> </exclusion> </exclusions> </dependency>
+			<dependency> <groupId>org.apache.solr</groupId> <artifactId>solr-core</artifactId>
+			<version>5.2.1</version> <exclusions> <exclusion> <groupId>log4j</groupId>
+			<artifactId>log4j</artifactId> </exclusion> <exclusion> <groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId> </exclusion> </exclusions> </dependency> -->
+
+		<!-- elasticsearch -->
+		<dependency>
+			<groupId>com.thinkaurelius.titan</groupId>
+			<artifactId>titan-es</artifactId>
+			<version>${titan.version}</version>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>com.thinkaurelius.titan</groupId>
+			<artifactId>titan-test</artifactId>
+			<version>${titan.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

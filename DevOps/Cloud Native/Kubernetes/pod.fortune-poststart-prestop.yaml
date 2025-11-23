@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune
+  labels:
+    name: fortune
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+    # 生命周期
+    lifecycle:
+      # 启动前
+      postStart:
+        exec:
+          command:
+          - sh
+          - -c
+          - "apk add fortune && fortune > /usr/share/nginx/html/quote"
+      # 结束后
+      preStop:
+        exec: # 在容器主进程接收到TERM信号之前执行
+          command:
+          - nginx
+          - -s
+          - quit 
+    ports:
+      - name: http
+        containerPort: 80

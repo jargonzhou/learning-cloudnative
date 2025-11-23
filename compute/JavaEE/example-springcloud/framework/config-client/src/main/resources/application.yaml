@@ -1,0 +1,34 @@
+server:
+  port: 18013
+
+logging:
+  org.springframework.cloud.config: trace
+
+spring:
+  application:
+    name: config-client
+  config:
+    import: configserver:http://localhost:18012
+  cloud:
+    config:
+      # request: http://localhost:18012/{spring.application.name}/{profile}/{label}
+      # ex: http://localhost:18012/config-client/dev/config-client
+      uri: http://localhost:18012
+      profile: dev
+      label: config-client
+    bus:
+      id: config-client
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: devops
+    password: devops+rabbitmq
+    virtual-host: /
+
+# # https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.actuator
+management:
+  server.port: 18013
+  # 开启所有端点
+  endpoints.web.exposure.include: "*"
+  # 开启Actuator info端点
+  info.env.enabled: true

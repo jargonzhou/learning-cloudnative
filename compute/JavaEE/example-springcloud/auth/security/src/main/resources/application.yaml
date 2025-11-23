@@ -1,0 +1,38 @@
+server:
+  port: 10000
+  # HTTPS
+#  ssl:
+#    key-store-type: PKCS12
+#    key-store: classpath:certificate.p12
+#    key-store-password: 123456
+
+logging:
+  level:
+    org.springframework:
+      security: trace
+      boot.autoconfigure: info
+
+
+#  spring.datasource.url=jdbc:mysql://localhost/spring?useLegacyDatetimeCode=false&serverTimezone=UTC
+#  spring.datasource.username=root
+#  spring.datasource.password=
+#  spring.datasource.initialization-mode=always
+
+spring:
+  datasource:
+    driver-class: org.hsqldb.jdbc.JDBCDriver
+#    url: jdbc:hsqldb:hsql://localhost/spring
+    url: jdbc:hsqldb:mem:spring;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  # 数据库初始化: https://docs.spring.io/spring-boot/how-to/data-initialization.html
+  # import.sql
+  jpa:
+    hibernate:
+      ddl-auto: none
+  # schema.sql, data.sql
+  sql:
+    init:
+      mode: always
+      schema-locations: optional:classpath*:schema.sql
+      data-locations: optional:classpath*:data.sql

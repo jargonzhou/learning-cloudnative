@@ -1,0 +1,8 @@
+build/
+.vscode/
+*.fstxt
+*.fsdat
+*.fsidx
+*.fshash
+*.fsdir
+*.fsbkt

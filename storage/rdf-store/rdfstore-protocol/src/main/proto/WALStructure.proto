@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package rdfstore;
+
+option
+java_package = "generated.wal";
+option java_outer_classname = "WALStructureProtos";
+
+
+message LSN {
+	int32 todo = 1;
+}

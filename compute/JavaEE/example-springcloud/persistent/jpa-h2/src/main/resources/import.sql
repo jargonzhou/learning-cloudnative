@@ -1,0 +1,1 @@
+insert into customer (first_name,last_name,id) values ('first name','last name', select next value for customer_seq);

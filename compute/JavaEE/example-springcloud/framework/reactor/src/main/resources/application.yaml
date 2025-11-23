@@ -1,0 +1,6 @@
+server:
+  port: 18027
+
+spring:
+  application:
+    name: reactor

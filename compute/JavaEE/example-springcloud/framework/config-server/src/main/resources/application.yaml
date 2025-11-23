@@ -1,0 +1,36 @@
+server:
+  port: 18012
+
+logging:
+  org.springframework.cloud.config: trace
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      # see org.springframework.cloud.config.server.config.ConfigServerProperties
+      server:
+        # Git backend
+        # uri: path-to-local-git-repo
+        # 文件系统backend
+        native:
+          search-locations: classpath:/config
+        #
+        monitor:
+          github.enabled: false
+          gitlab.enabled: false
+          bitbucket.enabled: false
+          gitea.enabled: false
+          gitee.enabled: false
+          gogs.enabled: false
+    bus:
+      enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: devops
+    password: devops+rabbitmq
+    virtual-host: /

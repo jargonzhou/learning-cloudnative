@@ -1,0 +1,28 @@
+server:
+  port: 18025
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG
+
+spring:
+  application:
+    name: stream-producer
+
+  rabbitmq: # org.springframework.boot.autoconfigure.amqp.RabbitProperties
+    host: 127.0.0.1
+    port: 5672
+    username: devops
+    password: devops+rabbitmq
+    connection-timeout: 5s
+
+  cloud:
+    stream:
+      bindings: # BindingServiceProperties
+        acceptOrder-out-0: # 输出绑定
+          destination: order-accepted
+      rabbit: # RabbitExtendedBindingProperties
+        bindings:
+          acceptOrder-out-0:
+            producer: # RabbitProducerProperties
+              transacted: true # 支持事务

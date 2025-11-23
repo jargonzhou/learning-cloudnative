@@ -1,0 +1,57 @@
+server:
+  port: 18001
+  # see BasicErrorController
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+    include-path: always
+    include-stacktrace: always
+    path: /error
+    whitelabel:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  application:
+    name: resource-client
+  security:
+    oauth2:
+      # 配置客户端
+      # https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html#oauth2login-boot-property-mappings
+      # see org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties
+      # see org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration
+      client:
+        registration:
+          my_authorization_server: # registrationId
+            provider: my_authorization_server
+            client-id: resource-client
+            client-name: "Resource Client"
+            client-secret: secret
+            client-authentication-method: client_secret_basic
+            # 授权码模式
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:1800/login/oauth2/code/my_authorization_server"
+            scope:
+              - openid
+              - profile
+              - rs.private
+          another_client:
+            provider: my_authorization_server
+            client-id: resource-client
+            client-name: "Another Resource Client"
+            client-secret: secret
+            client-authentication-method: client_secret_basic
+            # 客户端凭证模式
+            authorization-grant-type: client_credentials
+            tokenUri: http://authz.com:19000/oauth/token
+            scope:
+              - openid
+        provider:
+          my_authorization_server:
+            # 仅issuer-uri: 使用OpenID Connect Provider的配置端点或授权服务器的元数据端点
+            #            issuer-uri: http://127.0.0.1:19000
+            issuer-uri: http://authz.com:19000

@@ -1,0 +1,82 @@
+server:
+  port: 18016
+
+logging:
+  level:
+    # feign logging only responds to DEBUG level
+    com.spike.springcloud.netflix.feign.EurekaInstanceFeignClient: DEBUG
+
+# 应用级配置
+#app:
+#  eureka-instance:
+#    name: EUREKA-INSTANCE
+
+spring:
+  application:
+    name: eureka-client
+  cloud:
+    # 负载均衡器
+#    loadbalancer:
+#      enabled: true
+    openfeign:
+      client:
+        config:
+          # 默认配置
+          # see org.springframework.cloud.openfeign.FeignClientProperties
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: full
+      # 断路器
+      circuitbreaker:
+        enabled: true # FIXME(zhoujiagen): 添加断路器后无法访问/api, 但从日志中看有相应
+
+# more OpenFeign configuration
+#spring:
+#	cloud:
+#		openfeign:
+#			client:
+#				config:
+#					feignName:
+#                       url: http://remote-service.com
+#						connectTimeout: 5000
+#						readTimeout: 5000
+#						loggerLevel: full
+#						errorDecoder: com.example.SimpleErrorDecoder
+#						retryer: com.example.SimpleRetryer
+#						defaultQueryParameters:
+#							query: queryValue
+#						defaultRequestHeaders:
+#							header: headerValue
+#						requestInterceptors:
+#							- com.example.FooRequestInterceptor
+#							- com.example.BarRequestInterceptor
+#						responseInterceptor: com.example.BazResponseInterceptor
+#						dismiss404: false
+#						encoder: com.example.SimpleEncoder
+#						decoder: com.example.SimpleDecoder
+#						contract: com.example.SimpleContract
+#						capabilities:
+#							- com.example.FooCapability
+#							- com.example.BarCapability
+#						queryMapEncoder: com.example.SimpleQueryMapEncoder
+#						micrometer.enabled: false
+
+
+eureka:
+  # see org.springframework.cloud.netflix.eureka.EurekaClientConfigBean
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:18014/eureka/
+  # see org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+
+# # https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.actuator
+management:
+  server.port: ${server.port}
+  # 开启所有端点
+  endpoints.web.exposure.include: "*"
+  # 开启Actuator info端点
+  info.env.enabled: true

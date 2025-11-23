@@ -1,0 +1,27 @@
+server:
+  port: 18026
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG
+
+spring:
+  application:
+    name: stream-consumer
+
+  rabbitmq: # org.springframework.boot.autoconfigure.amqp.RabbitProperties
+    host: 127.0.0.1
+    port: 5672
+    username: devops
+    password: devops+rabbitmq
+    connection-timeout: 5s
+
+  cloud:
+    function: # 函数
+      definition: dispatchOrder
+
+    stream:
+      bindings:
+        dispatchOrder-in-0: # 输入绑定
+          destination: order-dispatched
+          group: ${spring.application.name}

@@ -1,0 +1,22 @@
+// syscall:execve
+
+BEGIN
+{
+  printf("%-10s %-5s %s\n", "TIME(ms)", "PID", "ARGS");
+}
+
+tracepoint:syscalls:sys_enter_execve
+{
+  printf("%-10u %-5d ", elapsed / 1000000, pid);
+  join(args->argv);
+}
+
+/*
+$ sudo bpftrace execsnoop.bt
+Attaching 2 probes...
+TIME(ms)   PID   ARGS
+7647       1165  ls --color=auto
+20827      1171  tree
+30338      1176  cat cpu/execsnoop.bt
+^C
+*/

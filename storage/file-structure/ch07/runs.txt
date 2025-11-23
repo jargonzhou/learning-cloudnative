@@ -1,0 +1,76 @@
+# test_recording.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch07/test_recording 
+Recording R[0] at recaddr 17
+Recording R[1] at recaddr 62
+Recording R[2] at recaddr 117
+Recording R[3] at recaddr 152
+Recording R[4] at recaddr 196
+Recording R[5] at recaddr 241
+Recording R[6] at recaddr 285
+Recording R[7] at recaddr 338
+Recording R[8] at recaddr 382
+Recording R[9] at recaddr 427
+
+# test_text_idx.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch07/test_text_idx 
+17      LON|2312|Romeo and Juliet|Prokofiev|Maazel
+62      RCA|2626|Quarter in C Sharp Minor|Beethoven|Julliard
+117     WAR|23699|Touchstone|Corea|Corea
+152     ANG|3795|Symphony No. 9|Beethoven|Giulini
+196     COL|38358|Nebraska|Springsteen|Springsteen
+241     DG|18807|Symphony No. 9|Beethoven|Karajan
+285     MER|75016|Coq d'or Suite|Rimsky-Korsakov|Leinsdorf
+338     COL|31809|Symphony No. 9|Dvorak|Bernstein
+382     DG|139201|Violin Concerto|Beethoven|Ferras
+427     FF|245|Good News|Sweet Honey in the Rock|Sweet Honey in the Rock
+text Index _maxKeys=10, _numKeys=10
+        Key[0]=ANG3795 RecAddr=152
+        Key[1]=COL31809 RecAddr=338
+        Key[2]=COL38358 RecAddr=196
+        Key[3]=DG139201 RecAddr=382
+        Key[4]=DG18807 RecAddr=241
+        Key[5]=FF245 RecAddr=427
+        Key[6]=LON2312 RecAddr=17
+        Key[7]=MER75016 RecAddr=285
+        Key[8]=RCA2626 RecAddr=62
+        Key[9]=WAR23699 RecAddr=117
+Retrieve LON2312 at recaddr 17
+read result: 17
+Found record: LON|2312|Romeo and Juliet|Prokofiev|Maazel
+
+# test_text_idx_file.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch07/test_text_idx_file
+...
+Looking for record with key: LON2312
+LON|2312|Romeo and Juliet|Prokofiev|Maazel
+
+Looking for record with key: RCA2626
+RCA|2626|Quarter in C Sharp Minor|Beethoven|Julliard
+
+Looking for record with key: WAR23699
+WAR|23699|Touchstone|Corea|Corea
+
+Looking for record with key: ANG3795
+ANG|3795|Symphony No. 9|Beethoven|Giulini
+
+Looking for record with key: COL38358
+COL|38358|Nebraska|Springsteen|Springsteen
+
+Looking for record with key: DG18807
+DG|18807|Symphony No. 9|Beethoven|Karajan
+
+Looking for record with key: MER75016
+MER|75016|Coq d'or Suite|Rimsky-Korsakov|Leinsdorf
+
+Looking for record with key: COL31809
+COL|31809|Symphony No. 9|Dvorak|Bernstein
+
+Looking for record with key: DG139201
+DG|139201|Violin Concerto|Beethoven|Ferras
+
+Looking for record with key: FF245
+FF|245|Good News|Sweet Honey in the Rock|Sweet Honey in the Rock
+...

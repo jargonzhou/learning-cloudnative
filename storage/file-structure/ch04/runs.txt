@@ -1,0 +1,88 @@
+# test_person_wr.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch04/test_person_wr 
+Last Name 'Ames'
+First Name 'Mary'
+Address '123 Maple'
+City 'Stillwater'
+State 'OK'
+Zip Code '74075'
+
+# test_buf.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch04/test_buf
+Initializing persons
+Person: 
+        Last Name=Ames
+        First Name=Mary
+        Address=123 Maple
+        City=Stillwater
+        State=OK
+        Zip Code=74075
+Person: 
+        Last Name=Mason
+        First Name=Alan
+        Address=90 Eastgate
+        City=Ada
+        State=OK
+        Zip Code=74820
+
+Testing FixedFieldBuffer
+write header 50
+write at 50
+write at 111
+read header 50
+First record:
+        Last Name=Mason
+        First Name=Alan
+        Address=90 Eastgate
+        City=Ada
+        State=OK
+        Zip Code=74820
+Second record:
+        Last Name=Ames
+        First Name=Mary
+        Address=123 Maple
+        City=Stillwater
+        State=OK
+        Zip Code=74075
+
+Testing LengthFieldBuffer
+write header 16
+write at 16
+write at 64
+read header 16
+First record:
+        Last Name=Mason
+        First Name=Alan
+        Address=90 Eastgate
+        City=Ada
+        State=OK
+        Zip Code=74820
+Second record:
+        Last Name=Ames
+        First Name=Mary
+        Address=123 Maple
+        City=Stillwater
+        State=OK
+        Zip Code=74075
+
+Testing DelimFieldBuffer
+write header 17
+write at 17
+write at 59
+read header 17
+First record:
+        Last Name=Mason
+        First Name=Alan
+        Address=90 Eastgate
+        City=Ada
+        State=OK
+        Zip Code=74820
+Second record:
+        Last Name=Ames
+        First Name=Mary
+        Address=123 Maple
+        City=Stillwater
+        State=OK
+        Zip Code=74075

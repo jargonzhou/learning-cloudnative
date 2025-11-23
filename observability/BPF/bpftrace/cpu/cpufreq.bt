@@ -1,0 +1,26 @@
+// sampling cpu frequency
+
+BEGIN
+{
+  printf("Sampling CPU freq system-wide & by process. Ctrl-C to end.\n");
+}
+
+// FIXME(zhoujiagen) why not work on VirtualBox instance???
+tracepoint:power:cpu_frequency
+{
+  @curfreq[args->cpu_id] = args->state;
+}
+
+profile:hz:100
+/@curfreq[cpu]/
+{
+  @system_mhz = lhist(@curfreq[cpu] / 1000, 0, 5000, 200);
+  if (pid) {
+    @process_mhz[comm] = lhist(@curfreq[cpu] / 1000, 0, 5000, 200);
+  }
+}
+
+END
+{
+  clear(@curfreq);
+}

@@ -1,0 +1,47 @@
+server:
+  port: 18024
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG
+
+spring:
+  application:
+    name: stream-processor
+
+  rabbitmq: # org.springframework.boot.autoconfigure.amqp.RabbitProperties
+    host: 127.0.0.1
+    port: 5672
+    username: devops
+    password: devops+rabbitmq
+    connection-timeout: 5s
+
+  cloud:
+    function: # https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream.html#spring_cloud_function
+      definition: pack|label
+
+    stream:
+      bindings:
+        # RabbitMQ自动生成Exchange: order-accepted, order-dispatched
+        # 注意pipeline的名称
+        packlabel-in-0:
+          destination: order-accepted
+          group: ${spring.application.name}
+        packlabel-out-0:
+          destination: order-dispatched
+
+# # https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.actuator
+# http://localhost:18024/actuator/health
+# http://localhost:18024/actuator/functions
+# http://localhost:18024/actuator/bindings
+# http://localhost:18024/actuator/channels
+management:
+  endpoints:
+    web.exposure.include: "*"
+    health:
+      show-details: always
+  # 开启Actuator info端点
+  info.env.enabled: true
+  health:
+    binders:
+      enabled: true

@@ -1,0 +1,109 @@
+server:
+  port: 18022
+
+logging:
+#  file.name: logs/gateway-server.log
+  level:
+    io.github.resilience4j: DEBUG
+
+spring:
+  application:
+    name: gateway-server
+
+  redis: # org.springframework.boot.autoconfigure.data.redis.RedisProperties
+    host: 127.0.0.1
+    port: 6379
+    # 连接超时时间
+    connect-timeout: 2s
+    # 响应超时时间
+    timeout: 1s
+
+  session: # org.springframework.boot.autoconfigure.session.SessionProperties
+    timeout: 10m
+    redis: # org.springframework.boot.autoconfigure.session.RedisSessionProperties
+      namespace: gateway-server
+
+  cloud:
+    # see https://docs.spring.io/spring-cloud-gateway/reference/appendix.html
+    # 自动配置: org.springframework.cloud.gateway.config.GatewayAutoConfiguration
+    gateway:
+      # Netty HttpClient配置
+      httpclient:
+        connection-timeout: 2000
+        response-timeout: 5s
+        pool:
+          type: elastic
+          max-idle-time: 15s
+          max-life-time: 60s
+      # 默认过滤器配置: https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories.html
+      default-filters:
+        # https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories/retry-factory.html
+        - name: Retry
+          args:
+            retries: 3
+            methods: GET
+            series: SERVER_ERROR
+            # 连接异常: ConnectException
+            exceptions: java.io.IOException,java.util.concurrent.TimeoutException
+            backoff:
+              firstBackoff: 50ms
+              maxBackOff: 500ms
+              factor: 2
+              basedOnPreviousValue: false
+        # https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories/requestratelimiter-factory.html
+        - name: RequestRateLimiter
+          args:
+            # org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter
+            # token bucket algorithm
+            # token fill rate per second
+            redis-rate-limiter.replenishRate: 10
+            # token bucket capacity
+            redis-rate-limiter.burstCapacity: 20
+            # tokens a request cost
+            redis-rate-limiter.requestedTokens: 1
+            redis-rate-limiter.include-headers: false # 不包含X-RateLimit-XXX header
+        # https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories/savesession-factory.html
+        - name: SaveSession # 在调用下游之前保存会话
+      # 路由定义
+      routes:
+        - id: webmvc
+          uri: http://localhost:18020/books
+          # 谓词
+          predicates:
+            - Path=/books/**
+          filters:
+            # 断路器: https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories/circuitbreaker-filter-factory.html
+            - name: CircuitBreaker
+              args:
+                name: webmvc-cb
+                # 断路器打开时转发路径
+                fallbackUri: forward:/webmvc-fallback
+        - id: webflux
+          uri: http://localhost:18021/orders
+          predicates:
+            - Path=/orders/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: webflux-cb
+
+# core modules: https://resilience4j.readme.io/docs/getting-started#core-modules
+# example: https://www.baeldung.com/resilience4j
+resilience4j:
+  # https://cloud.spring.io/spring-cloud-circuitbreaker/reference/html/index.html
+  # see org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder
+  circuitbreaker: # io.github.resilience4j.circuitbreaker.CircuitBreakerConfig
+    configs:
+      default:
+        # 滑动窗口大小: 20次调用
+        slidingWindowSize: 20
+        # 断路器处于半开状态时允许的调用次数
+        permittedNumberOfCallsInHalfOpenState: 5
+        # 调用失败阈值, 超过则断路器打开: 50%
+        failureRateThreshold: 50
+        # 断路器从开变为半开的等待时间
+        waitDurationInOpenState: 15000
+  timelimiter: # io.github.resilience4j.timelimiter.TimeLimiterConfig
+    configs:
+      default:
+        timeoutDuration: 5s

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spike.persistent.mybatis.mapper.UserMapper">
+    <resultMap id="User" type="com.spike.persistent.mybatis.entity.User">
+        <id column="id" property="id"/>
+        <result column="name" property="userName"/>
+    </resultMap>
+
+    <!-- H2 SQL Grammar: https://h2database.com/html/grammar.html -->
+    <update id="createSchema">
+        CREATE TABLE t_user(id INT PRIMARY KEY,
+        name VARCHAR(255) DEFAULT '' NOT NULL);
+    </update>
+
+    <insert id="insert">
+        insert into t_user(id, name)
+        values
+        (#{id}, #{userName})
+    </insert>
+
+    <select id="selectById" resultMap="User">
+        select * from t_user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,9 @@
+info:
+  name: default
+  description: "Config client"
+
+greeting: "Hello, there!"
+
+app:
+  name: config-client
+  description: "Client use config server"

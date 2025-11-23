@@ -1,0 +1,9 @@
+.classpath
+
+.project
+
+.settings/
+
+target/
+
+src/main/resources/conf/hbase-conf-final.xml

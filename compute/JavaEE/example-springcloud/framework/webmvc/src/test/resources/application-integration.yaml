@@ -1,0 +1,13 @@
+spring:
+  datasource:
+#    type: ''
+    driver-class: org.testcontainers.jdbc.ContainerDatabaseDriver
+    # https://java.testcontainers.org/modules/databases/jdbc/
+    # https://java.testcontainers.org/modules/databases/mysql/
+#    url: jdbc:tc:mysql:8.0.36:///devops # ?TC_INITSCRIPT=file:src/test/resources/init_mysql.sql
+    url: jdbc:tc:mysql:8.0.36:///devops?TC_INITSCRIPT=file:src/test/resources/init_mysql.sql
+    username: root
+    password: root
+#  sql:
+#    init:
+#      mode: always

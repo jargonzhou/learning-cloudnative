@@ -1,0 +1,87 @@
+# ex_fork.c
+
+$ ch08/ex_fork
+a write to stdout
+before fork
+pid = 2322, glob = 7, var = 89 # 子进程的变量值修改了
+pid = 2321, glob = 6, var = 88
+
+# ex_vfork.c
+
+$ ch08/ex_vfork
+before vfork
+pid = 2599, glob=7, var=89
+
+# ex_wait.c
+
+$ ch08/ex_wait
+normal termination, exit status = 7
+abnormal termination, signal number = 6
+abnormal termination, signal number = 8
+
+# race.c
+
+✗ ch08/race
+output from parent
+output from child
+
+# ex_exec.c echoall.c
+
+✗ ch08/ex_exec
+argv[0]: echoall
+argv[1]: myarg1
+argv[2]: MY ARG2
+USER=unknown
+PATH=/tmp
+argv[0]: echoall                                                                                                                                                          
+argv[1]: only 1 arg
+SECURITYSESSIONID=18858
+USER=zhang
+COMMAND_MODE=unix2003
+...
+
+# ex_nice.c
+
+✗ ch08/ex_nice   
+NZERO=20
+current nice value in parent is 20
+current nice value in child is 20, adjusting by 0
+now child nice value is 20
+child count = 301557816
+parent count = 301507377
+✗ ch08/ex_nice 20
+NZERO=20
+current nice value in parent is 20
+current nice value in child is 20, adjusting by 20
+now child nice value is 39
+parent count = 298654060
+child count = 290614321
+
+# ex_times.c
+
+✗ ch08/ex_times "sleep 5" "date" "man bash >/dev/null"
+
+command: sleep 5
+        real:    5.01
+        user:    0.00
+        sys:    0.00
+        child user:    0.00
+        child sys:    0.00
+normal termination, exit status = 0
+
+command: date
+Sun Oct 24 00:06:29 CST 2021
+        real:    0.02
+        user:    0.00
+        sys:    0.00
+        child user:    0.00
+        child sys:    0.00
+normal termination, exit status = 0
+
+command: man bash >/dev/null
+        real:    0.26
+        user:    0.00
+        sys:    0.00
+        child user:    0.31
+        child sys:    0.06
+normal termination, exit status = 0

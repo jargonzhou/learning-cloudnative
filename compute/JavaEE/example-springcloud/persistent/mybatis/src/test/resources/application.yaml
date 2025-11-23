@@ -1,0 +1,8 @@
+mybatis:
+  mapper-locations:
+    - classpath:mapping/*.xml
+    - classpath:mapping/autogen/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# @MapperScan("com.spike.dao")

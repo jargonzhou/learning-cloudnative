@@ -1,0 +1,41 @@
+server:
+  port: 18010
+  # 优雅关闭
+  shutdown: graceful
+  # 内嵌Tomcat配置
+  # more: https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.server.server.tomcat.accept-count
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads: # 工作者线程
+      max: 50
+      min-spare: 5
+
+debug: false
+logging:
+  level:
+    org.springframework.boot: INFO
+
+spring:
+  application:
+    name: spring-core
+  lifecycle:
+    # 每个phase关闭的超时时间(每个相同phase值的SmartLifecycle bean)
+    timeout-per-shutdown-phase: 15s
+
+spike:
+  # 自定义Worker实例
+  workers:
+    configs:
+      hello-world:
+        name: HelloWorld
+        type: com.spike.springcloud.framework.domain.woker.impl.HelloWorldWorker
+        enabled: true
+        params:
+          greeting: Spike
+      work-horse:
+        name: WorkHorse
+        # no type
+        enabled: true
+        params:
+          duration: 1

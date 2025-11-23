@@ -1,0 +1,25 @@
+server:
+  port: 18031
+
+logging:
+  level:
+    com.alibaba.csp.sentinel: trace
+
+spring:
+  application:
+    name: sentinel-app
+  cloud:
+    sentinel: # com.alibaba.cloud.sentinel.SentinelProperties
+      enabled: true
+      eager: true
+      transport:
+        port: 18032
+        dashboard: localhost:18080
+
+management:
+  server.port: ${server.port}
+  # /actuator/sentinel
+  endpoints:
+    web:
+      exposure:
+        include: '*'

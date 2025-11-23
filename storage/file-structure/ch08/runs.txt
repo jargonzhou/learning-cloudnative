@@ -1,0 +1,57 @@
+# test_str_seq.cc
+
+Prepare data:
+
+for e in ADAMS CARTER CHIN DAVIS FOSTER GARWICK JAMES JOHNSON KARNS LAMBERT MILLER PETERS RESTON ROSEWALD TURNER 
+do
+  echo $e >> list1.fstxt
+done
+
+for e in ADAMS ANDERSON ANDREWS BECH BURNS CARTER DAVIS DEMPSEY GRAY JAMES JOHNSON KATZ PETERS ROSEWALD SCHMIDT THARYER WALKER WILLIS
+do
+  echo $e >> list2.fstxt
+done
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch08/test_str_seq
+✗ cat list1.fstxt list2.fstxt | sort | uniq > temp.fstxt
+✗ diff merge.fstxt temp.fstxt 
+
+
+# test_ledger.cc
+
+✗ /Users/zhang/workspace/github/dbms-hacks/codes/file-structure/build/ch08/test_ledger 
+...
+101     Checking Account #1
+          1271  04/02/86        Auto expense                      -78.70
+          1272  04/02/97        Rent                             -500.00
+          1273  04/04/97        Advertising                       -87.50
+          1274  04/02/97        Auto expense                      -31.83
+                        Prev. bal:  5219.23     New bal:  4521.20
+102     Checking Account #2
+           670  04/02/97        Office expense                    -32.78
+                        Prev. bal:  1321.20     New bal:  1288.42
+505     Advertising expense
+          1273  04/04/97        Newspaper ad re: new product       87.50
+                        Prev. bal:    25.00     New bal:   112.50
+510     Auto expenses
+          1271  04/02/97        Tune up and minor repair           78.70
+          1274  04/09/97        Oil change                         31.83
+                        Prev. bal:   501.12     New bal:   611.65
+515     Bank charges
+                        Prev. bal:     0.00     New bal:     0.00
+520     Books and publications
+                        Prev. bal:    87.40     New bal:    87.40
+525     Interest expense
+                        Prev. bal:   380.27     New bal:   380.27
+535     Miscellaneous expense
+                        Prev. bal:    23.87     New bal:    23.87
+540     Office expense
+           670  04/02/97        Printer cartridge                  32.78
+                        Prev. bal:   138.37     New bal:   171.15
+545     Postage and shipping
+                        Prev. bal:    57.45     New bal:    57.45
+550     Rent
+          1272  04/02/97        Rent for April                    500.00
+                        Prev. bal:  1500.00     New bal:  2000.00
+555     Supplies
+                        Prev. bal:  2441.80     New bal:  2441.80

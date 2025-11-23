@@ -1,0 +1,14 @@
+rdfStore:
+  fileSystem:
+    # root of database,  releated files are clusterd in this directory
+    root: /tmp
+    catalogRoot: /tmp/catalog
+    # max file size in bytes: 4GB
+    fileSizeMax: 4294967296
+    # block size in bytes: 8KB
+    blockSize: 8192
+    # page compact ratio: unused / freespace threshold
+    pageCompactRatio: 40
+    # page free minimum percent
+    pageFreePercentMin: 20
+    

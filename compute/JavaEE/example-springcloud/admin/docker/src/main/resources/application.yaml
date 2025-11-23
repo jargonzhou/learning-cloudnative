@@ -1,0 +1,6 @@
+server:
+  port: 18016
+
+spring:
+  application:
+    name: docker

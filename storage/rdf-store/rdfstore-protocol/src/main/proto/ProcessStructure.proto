@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package rdfstore;
+
+option java_package = "generated.filesystem.client";
+option java_outer_classname = "ProcessStructureProtos";
+
+//---------------------------------------------------------------------------
+// 逻辑数据结构定义
+//---------------------------------------------------------------------------
+enum ClientType {
+	CATALOG_CLIENT = 0;
+	LOG_CLIENT = 1;
+	DATA_CLIENT = 2;
+	INDEX_CLIENT = 3;
+}
+
+message ClientId {
+	ClientType clientType = 1;
+	string nodeId = 2;
+	string serverId = 3;
+	string clientId = 4;
+}

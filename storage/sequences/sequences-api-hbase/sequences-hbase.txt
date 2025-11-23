@@ -1,0 +1,20 @@
+create_namespace 'playground'
+create 'playground:sequence', 'cf'
+// disable 'playground:sequence'
+// drop 'playground:sequence'
+
+incr 'playground:sequence', 'GLOBAL', 'cf:c', 1
+COLUMN                                       CELL
+ cf:c                                        timestamp=1530681917158, value=\x00\x00\x00\x00\x00\x00\x00\x01
+get 'playground:sequence', 'GLOBAL'
+scan 'playground:sequence'
+
+incr 'playground:sequence', 'GLOBAL', 'cf:c', 1
+get 'playground:sequence', 'GLOBAL'
+COLUMN                                       CELL
+ cf:c                                        timestamp=1530682013860, value=\x00\x00\x00\x00\x00\x00\x00\x02
+
+incr 'playground:sequence', 'GLOBAL', 'cf:c', -1
+get 'playground:sequence', 'GLOBAL'
+COLUMN                                       CELL
+ cf:c                                       timestamp=1530682040050, value=\x00\x00\x00\x00\x00\x00\x00\x01

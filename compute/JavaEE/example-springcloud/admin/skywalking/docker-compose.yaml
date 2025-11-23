@@ -1,0 +1,20 @@
+services:
+  skywalking-app:
+    image: dev/skywalking-app
+    container_name: skywalking-app
+    labels:
+      app.language: Java
+      app.type: Backend
+    ports: # DEPLOY_ENV
+      - 18029:18029
+#    volumes:
+#      - "/opt/apm/skywalking-agent:/skywalking-agent"
+    environment:
+      - "SW_AGENT_NAME=skywalking-app"
+      - "SW_AGENT_COLLECTOR_BACKEND_SERVICES=skywalking-oap-server:11800"
+    networks:
+      - apm-network
+
+networks:
+  apm-network:
+    external: true
