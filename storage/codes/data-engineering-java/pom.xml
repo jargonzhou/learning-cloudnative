@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.spike.dataengineering</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <guava.version>33.4.0-jre</guava.version>
+
+        <kafka.version>3.7.0</kafka.version>
+        <redisson.version>3.45.0</redisson.version>
+        <rocketmq-client.version>5.3.2</rocketmq-client.version>
+        <rocketmq-client-java.version>5.0.7</rocketmq-client-java.version>
+
+        <netty.version>4.1.118.Final</netty.version>
+        <commons-net.version>3.11.1</commons-net.version>
+        <bcpkix-jdk18on.version>1.80</bcpkix-jdk18on.version>
+        <bcprov-jdk18on.version>1.80</bcprov-jdk18on.version>
+
+        <elasticjob-lite-core.version>3.0.4</elasticjob-lite-core.version>
+        <mysql-connector-j.version>8.0.32</mysql-connector-j.version>
+
+        <jetcd.version>0.8.5</jetcd.version>
+
+        <curator.version>5.8.0</curator.version>
+
+        <flink.version>1.20.1</flink.version>
+
+        <!-- log4j2 -->
+        <log4j2.version>2.17.1</log4j2.version>
+
+        <!-- Logback
+        1.2.13: for SLF4j 1.7.x
+        1.5.12: for SLF4j 2.0.12+
+        -->
+        <logback.version.1_2_13>1.2.13</logback.version.1_2_13>
+        <logback.version.1_5_12>1.5.12</logback.version.1_5_12>
+
+        <!-- Testcontainers -->
+        <testcontainers-kafka.version>1.21.0</testcontainers-kafka.version>
+        <testcontainers-redis.version>2.2.2</testcontainers-redis.version>
+    </properties>
+
+    <modules>
+        <module>infrastructure</module>
+        <module>database</module>
+        <module>messaging</module>
+        <module>scheduling</module>
+        <module>streaming</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- log -->
+            <!-- Logback
+            1.2.13: for SLF4j 1.7.x
+            1.5.12: for SLF4j 2.0.12+
+            -->
+            <!--            <dependency>-->
+            <!--                <groupId>ch.qos.logback</groupId>-->
+            <!--                <artifactId>logback-classic</artifactId>-->
+            <!--                <version>1.5.12</version>-->
+            <!--                <version>1.2.13</version>-->
+            <!--            </dependency>-->
+
+            <dependency> <!-- Guava -->
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency> <!-- Apache Common Net -->
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <!-- test -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.26.3</version>
+            </dependency>
+            <!-- example: https://www.baeldung.com/awaitility-testing -->
+            <dependency>
+                <groupId>org.awaitility</groupId>
+                <artifactId>awaitility</artifactId>
+                <version>4.2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>5.11.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>5.14.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>5.14.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

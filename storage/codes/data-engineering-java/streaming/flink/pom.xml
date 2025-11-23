@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.spike.dataengineering</groupId>
+        <artifactId>streaming</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>flink</artifactId>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency> <!-- DataStream  -->
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java</artifactId>
+            <version>${flink.version}</version>
+            <exclusions>
+                <exclusion> <!-- for testcontianers -->
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-compress</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency> <!-- Table API  -->
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-api-java</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency> <!-- Table API + DataStream -->
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-api-java-bridge</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <!-- connector -->
+        <!-- flink-connector-NAME -->
+        <!-- flink-sql-connector-NAME -->
+        <!-- Kafka:
+        https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/datastream/kafka/
+        https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/table/kafka/
+        -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka</artifactId>
+            <version>3.3.0-1.20</version>
+        </dependency>
+        <!-- JSON format: https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/datastream/formats/json/ -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-json</artifactId>
+            <version>${flink.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JDBC: https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/table/jdbc/-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-jdbc</artifactId>
+            <version>3.3.0-1.20</version>
+        </dependency>
+        <dependency> <!-- MySQL -->
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql-connector-j.version}</version>
+        </dependency>
+
+
+        <!-- run job by main -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients</artifactId>
+            <version>${flink.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-runtime</artifactId>
+            <version>${flink.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner-loader</artifactId>
+            <version>${flink.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- log4j2 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+        <!-- DataStream API Testing -->
+        <!-- testing Flink jobs: MiniClusterWithClientResource -->
+        <!--        <dependency> -->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-test-utils</artifactId>-->
+        <!--            <version>${flink.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!-- Table API Testing -->
+        <!--        <dependency> -->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-table-test-utils</artifactId>-->
+        <!--            <version>${flink.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://java.testcontainers.org/modules/kafka/ -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>kafka</artifactId>
+            <version>${testcontainers-kafka.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://java.testcontainers.org/modules/databases/mysql/ -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mysql</artifactId>
+            <version>${testcontainers-kafka.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            &lt;!&ndash; uber/fat JAR &ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-shade-plugin</artifactId>-->
+    <!--                <version>3.1.1</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <phase>package</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>shade</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <artifactSet>-->
+    <!--                                <excludes>-->
+    <!--                                    <exclude>com.google.code.findbugs:jsr305</exclude>-->
+    <!--                                </excludes>-->
+    <!--                            </artifactSet>-->
+    <!--                            <filters>-->
+    <!--                                <filter>-->
+    <!--                                    &lt;!&ndash; Do not copy the signatures in the META-INF folder.-->
+    <!--                                    Otherwise, this might cause SecurityExceptions when using the JAR. &ndash;&gt;-->
+    <!--                                    <artifact>*:*</artifact>-->
+    <!--                                    <excludes>-->
+    <!--                                        <exclude>META-INF/*.SF</exclude>-->
+    <!--                                        <exclude>META-INF/*.DSA</exclude>-->
+    <!--                                        <exclude>META-INF/*.RSA</exclude>-->
+    <!--                                    </excludes>-->
+    <!--                                </filter>-->
+    <!--                            </filters>-->
+    <!--                            <transformers>-->
+    <!--                                <transformer-->
+    <!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+    <!--                                    &lt;!&ndash; Replace this with the main class of your job &ndash;&gt;-->
+    <!--                                    <mainClass>my.programs.main.clazz</mainClass>-->
+    <!--                                </transformer>-->
+    <!--                                <transformer-->
+    <!--                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>-->
+    <!--                            </transformers>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+</project>
