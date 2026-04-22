@@ -10,8 +10,11 @@ Playground of Cloud Native concepts, patterns and applications.
 
 ## Actions
 
+- [Infrastructure](./infrastructure/infrastructure.md)
 - [Compute](./compute/compute.md)
 - [Storage](./storage/storage.md)
 - [Networking](./networking/networking.md)
 - [Security](./security/security.md)
-- [ObObservability](./observability/observability.md)
+- [Observability](./observability/observability.md)
+- [Testing](./testing/testing.md)
+- [Architecture](./architecture/architecture.md)

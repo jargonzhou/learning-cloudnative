@@ -1,0 +1,10 @@
+---
+- name: Tests
+  hosts: all:localhost
+  gather_facts: false
+  tasks:
+    - name: Check if host can reach the database server
+      can_reach:
+        host: www.baidu.com
+        port: 80
+        timeout: 1

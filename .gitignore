@@ -12,3 +12,10 @@ compute/multiprocessor/java/.idea
 # storage
 
 # networking
+
+
+# codes
+.vagrant/
+slack.info
+codes/ansbile/ansible-up-and-running/ch18/slack.info.yml
+.env

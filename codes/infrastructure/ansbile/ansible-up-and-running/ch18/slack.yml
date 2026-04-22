@@ -1,0 +1,14 @@
+---
+- name: Tests
+  hosts: all
+  gather_facts: false
+  vars_files:
+    - slack.info.yml
+  tasks:
+    - name: Notify Slack - example
+      community.general.slack:
+        token: "{{ slack_token }}"
+        channel: "#ansible"
+        msg: "This is a notification from Ansible."
+      run_once: true
+      delegate_to: localhost
